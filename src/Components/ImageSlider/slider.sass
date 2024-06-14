@@ -1,0 +1,81 @@
+#imageSlider
+    overflow: hidden
+    width: 100vw
+    height: 100vh
+    display: flex
+
+    .background
+        position: relative
+        width: 100vw
+        height: 100vh
+
+        background: url("../../../public/Assets/Images/pizza4.jpg") no-repeat center
+        background-size: 100%
+        box-shadow: 0 0 calc(5vh + 5vw) rgba(0,0,0,0.9) inset
+        border-bottom: calc(.1vh + .1vw) solid black
+
+        display: flex
+        justify-content: center
+        align-items: center
+
+        animation: bgZoom 1s forwards
+
+        overflow: visible
+
+        .title
+            z-index: 0
+            width: 100%
+            height: fit-content
+            text-align: center
+            color: white
+            font-size: calc(5vh + 5vw)
+            font-weight: 700
+            font-family: Sellena
+            text-shadow: 0 0 calc(.5vh + .5vw) rgba(0,0,0,0.9)
+            animation: scrollDown 1s forwards
+
+
+        .slideDown
+            $size: calc(3vh + 3vw)
+            position: fixed
+            height: $size
+            width: fit-content
+            display: flex
+            left: calc(.5vh + .5vw)
+            bottom: calc(.5vh + .5vw)
+            overflow: visible
+            z-index: 9999
+
+            .icon
+                height: $size
+                width: $size
+                background-image: URL("../../../public/Assets/Images/pizza.svg")
+                background-size: 100%
+                filter: invert(100%) drop-shadow(0 0 calc(.05vh + .05vw) black)
+
+        .text
+            position: absolute
+            
+            bottom: calc(.5vh + .5vw)
+            text-align: center
+            text-transform: uppercase
+            font-family: Georgia, 'Times New Roman', Times, serif
+            color: white
+            display: flex
+            flex-direction: column-reverse
+            filter: drop-shadow(0 0 calc(.05vh + .05vw) black)
+            cursor: pointer
+                
+
+        @keyframes scrollDown 
+            from
+                font-size: calc(1vh + 1vw)
+                margin-top: -100vh
+        
+
+        @keyframes bgZoom 
+            from 
+                background-size: 300%
+        
+
+        

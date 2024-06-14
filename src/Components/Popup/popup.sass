@@ -1,0 +1,31 @@
+
+#popup *
+    overflow: hidden
+
+#popup
+    user-select: none
+    background-color: white
+    color: black
+    position: fixed
+    bottom: calc(1vh + 1vw)
+    right: calc(1vh + 1vw)
+    z-index: 99999
+    height: calc( 3vh + 3vw)
+    width: calc(18vh + 18vw)
+    border-radius: calc( .5vh + .5vw )
+    display: flex
+    padding-inline: calc(1vh + 1vw)
+    box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.596)
+    justify-content: center
+
+    .message
+        font-size: calc(1vh + 1vw)
+        
+
+    .slider
+        width: 0%
+        position: absolute
+        bottom: 0
+        left: 0
+        height: calc(.2vh + .2vw)
+        background: rgb(255, 88, 88)

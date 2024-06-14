@@ -1,0 +1,214 @@
+#menu *
+    overflow: hidden
+    
+#menu
+    width: 100vw
+    height: fit-content
+    overflow: hidden
+    
+    .title
+        text-align: center
+        margin-top: calc(2.5vh + 2.5vw)
+        font-size: calc(2.5vh + 2.5vw)
+        text-transform: uppercase
+        font-family: Sellena
+
+    .bottom
+        $elements_side_distance: calc(1vh + 1vw)
+        width: 100vw
+        height: fit-content
+        padding-top: calc(3vh + 3vw)
+        padding-bottom: calc(3vh + 3vw)
+        padding-inline: $elements_side_distance
+        position: relative
+        display: flex
+        flex-wrap: wrap
+        box-sizing: border-box
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box 
+
+        $row_component_count: 4
+        $element_width: calc(15vh + 15vw)
+
+        gap: calc(1vh + 1vw)
+        justify-content: center
+
+
+        .pizza
+            overflow: hidden
+            position: relative
+            float: left
+            background: white
+
+            width: $element_width
+            height: calc(25vh + 25vw)
+            display: flex
+            flex-direction: column
+            box-shadow: 0 0 calc(2vh + 2vw) rgba(0, 0, 0, 0.267)
+            border-radius: calc(.5vh + .5vw)
+            transition: .25s
+            align-items: center
+
+            .image
+                width: 100%
+                height: 50%
+                background-color: gray
+                background-image: url("../../../public/Assets/Images/pizza.svg")  
+                background-position: center
+                background-size: cover
+                background-repeat: no-repeat
+            
+            .name
+                text-align: center
+                text-transform: uppercase
+                font-weight: bold
+                font-size: calc(1vh + 1vw)
+
+            .description
+                color: gray
+                padding: calc(1vh + 1vw)
+                text-align: center
+
+            .order, .quanity
+                box-shadow: 0 0 calc(.1vh + .1vw) rgba(0, 0, 0, 0.596)
+                width: calc(10vh + 10vw)
+                height: calc(2vh + 2vw)
+                background-color: white
+                display: flex
+                justify-content: center
+                align-items: center
+                border-radius: calc(1vh + 1vw)
+                user-select: none
+                cursor: pointer
+                text-transform: uppercase
+                font-weight: bold
+                transition: .1s
+
+            .quanity
+                cursor: default
+
+            .quanity-container
+                margin-top: calc(.5vh + .5vw)
+                height: fit-content
+                position: relative
+                overflow: visible
+                display: flex
+                align-items: center
+
+                .button
+                    position: absolute
+                    margin: calc(.5vh + .5vw)
+                    height: calc(.5vh + .5vw)
+                    width: calc(.5vh + .5vw)
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    font-size: 200%
+                    background-image: URL("../../../public/Assets/Images/plus.svg")
+                    background-position: center
+                    background-size: 100%
+                    cursor: pointer
+
+                .button.minus
+                    background-image: URL("../../../public/Assets/Images/minus.svg")
+                    left: calc(.5vh + .5vw)
+                
+                .button.plus
+                    background-image: URL("../../../public/Assets/Images/plus.svg")
+                    right: calc(.5vh + .5vw)
+
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button 
+                -webkit-appearance: none
+                margin: 0
+
+
+            .quanity
+
+            .order:hover
+                background-color: rgb(255, 88, 88)
+                color: white
+
+            #bottom
+                width: 100%
+                height: 50%
+                display: flex
+                flex-direction: column
+                align-items: center
+
+
+
+            #sizes
+                margin-top: calc(.5vh + .5vw)
+                box-shadow: 0 0 calc(.1vh + .1vw) rgba(0, 0, 0, 0.596)
+                width: calc(10vh + 10vw)
+                height: calc(2vh + 2vw)
+                background-color: white
+                display: flex
+                border-radius: calc(1vh + 1vw)
+                transition: .25s
+
+                .size
+                    margin: 0
+                    width: calc(calc(10vh + 10vw) / 4)
+                    transition: .1s
+                    cursor: pointer
+
+                    .pizza-image
+                        width: 100%
+                        height: 100%
+                        background-image: URL('../../../public/Assets/Images/pizza.svg')
+                        background-position: center
+                        background-size: 30%
+                        background-repeat: no-repeat
+                    
+                .size:nth-child(2) .pizza-image
+                    background-size: 40%
+            
+                .size:nth-child(3) .pizza-image
+                    background-size: 50%
+
+                .size:nth-child(4) .pizza-image
+                    background-size: 60%
+
+
+                .size.selected, .size:hover, .size.selected:hover
+                    background-color: rgb(255, 88, 88)
+ 
+
+                    .pizza-image
+                        filter: invert(100%)
+
+
+                .text
+                    opacity: 0
+                    font-size: calc(.5vh + .5vw)
+                    font-weight: bold
+                    text-transform: uppercase
+                    position: absolute
+                    transition: .25s
+
+                .size:hover .text
+                    opacity: 1
+
+    
+             
+
+
+                    
+
+                    
+
+                        
+
+                    
+
+        .pizza:nth-child(4n + 1)
+            margin-left: 0
+
+        // .pizza:not(:nth-child(-n + 4))
+        //     margin-top: $elements_side_distance
+
+        .pizza:hover
+            scale: 1.025
