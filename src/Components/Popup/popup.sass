@@ -6,20 +6,20 @@
     user-select: none
     background-color: white
     color: black
-    position: fixed
-    right: calc(1vh + 1vw)
     z-index: 100
+    scale: 0
     height: calc( 3vh + 3vw)
     width: calc(18vh + 18vw)
-    bottom: calc(-5vh - 5vw)
+    margin-bottom: calc(-5vh - 5vw)
     border-radius: calc( .5vh + .5vw )
     display: flex
     padding-inline: calc(1vh + 1vw)
-    box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.596)
+    position: relative
     justify-content: center
     align-items: center
     transition: .5s
-
+    box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.596)
+    
     .top
         width: 100%
         height: calc(calc(3vh + 3vw) - calc(.2vh + .2vw))
@@ -64,15 +64,19 @@
 
 @keyframes goUp 
     from 
-        bottom: calc(-5vh - 5vw)
+        margin-bottom: calc(-5vh - 5vw)
+        scale: 0
     to
-        bottom: calc(1vh + 1vw)
+        margin-bottom: calc(1vh + 1vw)
+        scale: 1
 
 @keyframes goDown
     from
-        bottom: calc(1vh + 1vw)
+        margin-bottom: calc(1vh + 1vw)
+        scale: 1
     to
-        bottom: calc(-5vh - 5vw)
+        margin-bottom: calc(-5vh - 5vw)
+        scale: 0
 
 @keyframes slider 
     from

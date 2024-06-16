@@ -5,7 +5,7 @@ import './menu.sass';
 // import hawaiian from  '../../Assets/Images/hawaiian.jpg';
 // import veggie from '../../Assets/Images/veggie.jpg';
 // import meatlovers from '../../Assets/Images/meat.jpg';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, ReactElement } from 'react';
 import order from '../../Data/order.json'
 import popupContext from '../popupContext';
 import Popup from '../Popup/popup';
@@ -43,8 +43,10 @@ const Menu = () => {
                 setDishCount(dishCount += number);
                 
             }
-            else if(dishCount >= dishLimit){                
-                data.setPopup(<Popup message={`The order limit is set to ${dishLimit}`}/>)
+            else if(dishCount >= dishLimit){            
+                data.setPopup((elements) =>
+                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}`}/>]
+                )    
             }
 
             return dish[1];
@@ -57,25 +59,26 @@ const Menu = () => {
         const dish = dishData[dishIndex];
 
         if(dish.order.quantity > 0 && dishCount < dishLimit){
-            data.setPopup(<Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added to cart`} icon={dish.image}/>)
+            data.setPopup((elements) =>
+                [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image}/>]
+            )
+
         }else if(dishCount >= dishLimit){
-            data.setPopup(<Popup message={`The order limit is set to ${dishLimit}`}/>)
+            data.setPopup((elements) =>
+                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}`}/>]
+            )
         }
     }
 
+    let dishCountQuery = 0;
     const addToDishFilters = (filter: { [id: string] : string}) => {
         setDishFilters(values => ({
             ...values,
             [Object.keys(filter)[0]] : filter[Object.keys(filter)[0]]
         }));
+        dishCountQuery = 0;
     }
 
-    const [menuContent, setMenuContent] = useState(
-        100
-    )
-
-    let dishType = null;
-    let lastDishType = null;
 
     return (
         <main id="menu">
@@ -95,7 +98,17 @@ const Menu = () => {
                 <div className="bottom">
                     {
                         dishData.map((dish, index) => {
-                            if(dishFilters.dishType !== 'none' && dish.type !== dishFilters.dishType) return null;
+
+                            if(index === dishData.length -1 && dishCountQuery === 0){
+                                return <h1>Not found</h1>
+                            }
+
+                            if(dishFilters.dishType !== 'none' && dish.type !== dishFilters.dishType)
+                            {
+                                return null;
+                            } 
+                            
+                            dishCountQuery++;
 
                             return(
                                 <div className="dish-container">
@@ -108,31 +121,31 @@ const Menu = () => {
                                             <div className="order" onClick={() => addToCart(index)}>order</div>
                                             
                                             <div className="quanity-container">
-                                                <div className="button minus" onClick={() => changeQuanity(index,-1)}></div>
+                                                <div className="button minus" onMouseDown={() => changeQuanity(index,-1)}></div>
                                                 <div className="quanity">{dish.order.quantity}</div>
-                                                <div className="button plus" onClick={() => changeQuanity(index,1)}></div>
+                                                <div className="button plus" onMouseDown={() => changeQuanity(index,1)}></div>
                                             </div>
 
                                             {
                                                 dish.type === "pizza" 
                                                 ? 
                                                     <div id="sizes">
-                                                        <div className={`size ${dish.order.size === 'small' ? 'selected' : ''}`} onClick={() => changeSize('small', index)}>
+                                                        <div className={`size ${dish.order.size === 'small' ? 'selected' : ''}`} onMouseDown={() => changeSize('small', index)}>
                                                             <div className="pizza-image" />
                                                             <div className="text">SMALL - 28CM</div>
                                                         </div>
 
-                                                        <div className={`size ${dish.order.size === 'medium' ? 'selected' : ''}`} onClick={() => changeSize('medium', index)}>
+                                                        <div className={`size ${dish.order.size === 'medium' ? 'selected' : ''}`} onMouseDown={() => changeSize('medium', index)}>
                                                             <div className="pizza-image" />
                                                             <div className="text">MEDIUM - 32CM</div>
                                                         </div>
 
-                                                        <div className={`size ${dish.order.size === 'big' ? 'selected' : ''}`} onClick={() => changeSize('big', index)}>
+                                                        <div className={`size ${dish.order.size === 'big' ? 'selected' : ''}`} onMouseDown={() => changeSize('big', index)}>
                                                             <div className="pizza-image" />
                                                             <div className="text">BIG - 40CM</div>
                                                         </div>
 
-                                                        <div className={`size ${dish.order.size === 'giant' ? 'selected' : ''}`} onClick={() => changeSize('giant', index)}>
+                                                        <div className={`size ${dish.order.size === 'giant' ? 'selected' : ''}`} onMouseDown={() => changeSize('giant', index)}>
                                                             <div className="pizza-image" />
                                                             <div className="text">GIANT - 50CM</div>
                                                         </div>

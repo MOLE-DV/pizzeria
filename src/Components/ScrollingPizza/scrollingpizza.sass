@@ -1,0 +1,17 @@
+.slideDown
+    $size: calc(3vh + 3vw)
+    position: fixed
+    height: $size
+    width: $size
+    display: flex
+    left: calc(1vh + 1vw)
+    bottom: calc(1vh + 1vw)
+    overflow: visible
+    z-index: 9999
+
+    .icon
+        height: $size
+        width: $size
+        background-image: URL("../../../public/Assets/Images/pizza.svg")
+        background-size: 100%
+        filter: invert(100%) drop-shadow(0 0 calc(.05vh + .05vw) black)

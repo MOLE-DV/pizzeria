@@ -8,8 +8,14 @@
 
     z-index: 1
 
+    .title
+        display: none
+
     .button
-        padding-top: calc(.5vh + .5vw)
+        text-decoration: none
+        overflow: visible
+        display: flex
+        padding-inline: calc(.5vh + .5vw)
         color: white
         font-size: calc(.75vh + .75vw)
         font-weight: bold
@@ -20,8 +26,50 @@
         user-select: none
         transition: .25s
         height: 100%
-        text-shadow: 0 0 calc(.5vh + .5vw) rgba(0,0,0,0.9)
+        text-shadow: 0 0 calc(.1vh + .1vw) rgba(0,0,0,0.9)
         
     
     .button:hover
         opacity: 1
+
+#header.fixed
+    user-select: none
+    position: fixed
+    height: calc(2vh + 2vw)
+    background: rgba(0, 0, 0, 0.281)
+    backdrop-filter: blur(calc(.1vh + .1vw))
+    display: flex
+    align-items: center
+    animation: .5s forwards slideDown
+    overflow: hidden
+
+    @keyframes slideDown
+        from 
+            margin-top: calc(-10vh - 10vw)
+        to
+            margin-top: 0        
+
+
+    .title
+        display: block
+        font-family: Sellena
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: calc(1.5vh + 1.5vw)
+        overflow: visible
+        padding-top: calc(.25vh + .25vw)
+        color: white
+        text-shadow: 0 0 calc(.1vh + .1vw) rgba(0,0,0,0.9)
+
+    .button
+        height: 100%
+        display: flex
+        align-items: center
+        text-shadow: 0 0 calc(.1vh + .1vw) rgba(0,0,0,0.9)
+        text-decoration: none
+
+    .button:hover
+        scale: 1.1
+        

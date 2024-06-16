@@ -10,7 +10,7 @@
         height: 100vh
 
         background: url("../../../public/Assets/Images/pizza4.jpg") no-repeat center
-        background-size: 100%
+        background-size: cover
         box-shadow: 0 0 calc(5vh + 5vw) rgba(0,0,0,0.9) inset
         border-bottom: calc(.1vh + .1vw) solid black
 
@@ -35,23 +35,7 @@
             animation: scrollDown 1s forwards
 
 
-        .slideDown
-            $size: calc(3vh + 3vw)
-            position: fixed
-            height: $size
-            width: fit-content
-            display: flex
-            left: calc(.5vh + .5vw)
-            bottom: calc(.5vh + .5vw)
-            overflow: visible
-            z-index: 9999
 
-            .icon
-                height: $size
-                width: $size
-                background-image: URL("../../../public/Assets/Images/pizza.svg")
-                background-size: 100%
-                filter: invert(100%) drop-shadow(0 0 calc(.05vh + .05vw) black)
 
         .text
             position: absolute
@@ -75,7 +59,9 @@
 
         @keyframes bgZoom 
             from 
-                background-size: 300%
+                scale: 3
+            to
+                scale: 1
         
 
         

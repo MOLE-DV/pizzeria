@@ -40,24 +40,16 @@
                 font-size: calc(.7vh + .7vw)
 
     .bottom
-        $elements_side_distance: calc(1vh + 1vw)
         width: 100vw
         height: fit-content
-        padding-top: calc(3vh + 3vw)
-        padding-bottom: calc(3vh + 3vw)
-        padding-inline: $elements_side_distance
         position: relative
-        display: flex
-        flex-wrap: wrap
         box-sizing: border-box
         -webkit-box-sizing: border-box
         -moz-box-sizing: border-box 
+        padding-top: calc(1vh + 1vw)
+        padding-right: calc(1vh + 1vw)
+        display: inline-block
 
-        $row_component_count: 4
-        $element_width: calc(15vh + 15vw)
-
-        gap: calc(1vh + 1vw)
-        justify-content: center
 
         .dish-type
             position: absolute
@@ -65,14 +57,15 @@
 
         .dish-container
             overflow: visible
-        
+            
         .pizza
             overflow: hidden
             position: relative
             float: left
             background: white
-
-            width: $element_width
+            margin-left: calc((100vw - (calc(1vh + 1vw) * 2) - (calc(15vh + 15vw) * 4)) / 4)
+            margin-bottom: calc((100vw - (calc(1vh + 1vw) * 2) - (calc(15vh + 15vw) * 4)) / 4)
+            width: calc(15vh + 15vw)
             height: calc(25vh + 25vw)
             display: flex
             flex-direction: column
@@ -224,9 +217,6 @@
                 .size:hover .text
                     opacity: 1
 
-    
-             
-
 
                     
 
@@ -234,13 +224,7 @@
 
                         
 
-                    
-
-        .pizza:nth-child(4n + 1)
-            margin-left: 0
-
-        // .pizza:not(:nth-child(-n + 4))
-        //     margin-top: $elements_side_distance
+            
 
         .pizza:hover
             scale: 1.025
