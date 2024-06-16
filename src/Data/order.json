@@ -3,240 +3,91 @@
         "name": "Cappriciosa",
         "image": "Assets/Images/cappriciosa.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A classic Italian pizza topped with tomato sauce, mozzarella, artichokes, ham, mushrooms, and olives."
+        "description": "A classic Italian pizza topped with tomato sauce, mozzarella, artichokes, ham, mushrooms, and olives.",
+        "type": "pizza"
     },
     {
         "name": "Margherita",
         "image": "Assets/Images/margherita.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A traditional pizza with tomato sauce, fresh mozzarella, and basil leaves."
+        "description": "A traditional pizza with tomato sauce, fresh mozzarella, and basil leaves.",
+        "type": "pizza"
     },
     {
         "name": "Pepperoni",
         "image": "Assets/Images/pepperoni.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A popular pizza topped with tomato sauce, mozzarella, and spicy pepperoni slices."
+        "description": "A popular pizza topped with tomato sauce, mozzarella, and spicy pepperoni slices.",
+        "type": "pizza"
     },
     {
         "name": "Hawaiian",
         "image": "Assets/Images/hawaiian.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A sweet and savory pizza with tomato sauce, mozzarella, ham, and pineapple."
+        "description": "A sweet and savory pizza with tomato sauce, mozzarella, ham, and pineapple.",
+        "type": "pizza"
     },
     {
         "name": "Veggie",
         "image": "Assets/Images/veggie.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A healthy choice with tomato sauce, mozzarella, bell peppers, onions, mushrooms, and olives."
+        "description": "A healthy choice with tomato sauce, mozzarella, bell peppers, onions, mushrooms, and olives.",
+        "type": "pizza"
     },
     {
         "name": "Meat Lovers",
         "image": "Assets/Images/meatlovers.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A hearty pizza loaded with tomato sauce, mozzarella, pepperoni, sausage, ham, and bacon."
+        "description": "A hearty pizza loaded with tomato sauce, mozzarella, pepperoni, sausage, ham, and bacon.",
+        "type": "pizza"
     },
     {
         "name": "Supreme",
         "image": "Assets/Images/supreme.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A pizza with tomato sauce, mozzarella, pepperoni, sausage, bell peppers, onions, and olives."
+        "description": "A pizza with tomato sauce, mozzarella, pepperoni, sausage, bell peppers, onions, and olives.",
+        "type": "pizza"
     },
     {
         "name": "Four Cheese",
         "image": "Assets/Images/four_cheese.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A cheesy delight with a blend of mozzarella, cheddar, Parmesan, and blue cheese."
+        "description": "A cheesy delight with a blend of mozzarella, cheddar, Parmesan, and blue cheese.",
+        "type": "pizza"
     },
     {
-        "name": "Buffalo Chicken",
-        "image": "Assets/Images/buffalo_chicken.jpg",
+        "name": "Spaghetti Carbonara",
+        "image": "Assets/Images/spaghetti_carbonara.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A spicy pizza with buffalo sauce, mozzarella, and grilled chicken pieces."
+        "description": "Classic Italian pasta with creamy egg sauce, pancetta, and Parmesan cheese.",
+        "type": "pasta"
     },
     {
-        "name": "Mexican",
-        "image": "Assets/Images/mexican.jpg",
+        "name": "Lasagna",
+        "image": "Assets/Images/lasagna.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A zesty pizza topped with salsa, mozzarella, jalapeños, corn, and ground beef."
+        "description": "Layers of pasta, Bolognese sauce, béchamel, and melted cheese.",
+        "type": "pasta"
     },
     {
-        "name": "Mushroom",
-        "image": "Assets/Images/mushroom.jpg",
+        "name": "Ravioli",
+        "image": "Assets/Images/ravioli.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A simple yet flavorful pizza with tomato sauce, mozzarella, and a generous amount of mushrooms."
+        "description": "Pasta pockets filled with ricotta cheese and spinach, served with marinara sauce.",
+        "type": "pasta"
     },
     {
-        "name": "Sausage",
-        "image": "Assets/Images/sausage.jpg",
+        "name": "Fettuccine Alfredo",
+        "image": "Assets/Images/fettuccine_alfredo.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A savory pizza with tomato sauce, mozzarella, and crumbled Italian sausage."
+        "description": "Fettuccine pasta tossed in a rich and creamy Alfredo sauce.",
+        "type": "pasta"
     },
     {
-        "name": "Bacon",
-        "image": "Assets/Images/bacon.jpg",
+        "name": "Penne Arrabbiata",
+        "image": "Assets/Images/penne_arrabbiata.jpg",
         "order": { "quantity": 0, "size": "small" },
-        "description": "A delicious pizza with tomato sauce, mozzarella, and crispy bacon pieces."
-    },
-    {
-        "name": "Cheese Lovers",
-        "image": "Assets/Images/cheese_lovers.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A pizza for cheese enthusiasts, topped with extra mozzarella and Parmesan."
-    },
-    {
-        "name": "Seafood",
-        "image": "Assets/Images/seafood.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A gourmet pizza with tomato sauce, mozzarella, shrimp, calamari, and mussels."
-    },
-    {
-        "name": "Tuna",
-        "image": "Assets/Images/tuna.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A unique pizza with tomato sauce, mozzarella, and chunks of tuna."
-    },
-    {
-        "name": "Salami",
-        "image": "Assets/Images/salami.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A flavorful pizza with tomato sauce, mozzarella, and slices of salami."
-    },
-    {
-        "name": "Spinach and Feta",
-        "image": "Assets/Images/spinach_and_feta.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A Mediterranean-inspired pizza with spinach, feta cheese, and mozzarella."
-    },
-    {
-        "name": "Chicken Alfredo",
-        "image": "Assets/Images/chicken_alfredo.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A creamy pizza with Alfredo sauce, mozzarella, and grilled chicken."
-    },
-    {
-        "name": "Greek",
-        "image": "Assets/Images/greek.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A fresh and flavorful pizza with tomato sauce, mozzarella, olives, feta cheese, and red onions."
-    },
-    {
-        "name": "Pesto",
-        "image": "Assets/Images/pesto.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A delicious pizza with pesto sauce, mozzarella, and cherry tomatoes."
-    },
-    {
-        "name": "Ham and Cheese",
-        "image": "Assets/Images/ham_and_cheese.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A classic combination of tomato sauce, mozzarella, and sliced ham."
-    },
-    {
-        "name": "Prosciutto",
-        "image": "Assets/Images/prosciutto.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A gourmet pizza with tomato sauce, mozzarella, and thinly sliced prosciutto."
-    },
-    {
-        "name": "Capricciosa",
-        "image": "Assets/Images/capricciosa.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A traditional Italian pizza with tomato sauce, mozzarella, artichokes, mushrooms, ham, and olives."
-    },
-    {
-        "name": "Quattro Formaggi",
-        "image": "Assets/Images/quattro_formaggi.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A four-cheese pizza with a blend of mozzarella, gorgonzola, Parmesan, and provolone."
-    },
-    {
-        "name": "Bolognese",
-        "image": "Assets/Images/bolognese.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A rich pizza topped with Bolognese sauce, mozzarella, and ground beef."
-    },
-    {
-        "name": "Eggplant",
-        "image": "Assets/Images/eggplant.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A vegetarian pizza with tomato sauce, mozzarella, and roasted eggplant slices."
-    },
-    {
-        "name": "Zucchini",
-        "image": "Assets/Images/zucchini.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A fresh pizza with tomato sauce, mozzarella, and thinly sliced zucchini."
-    },
-    {
-        "name": "Anchovy",
-        "image": "Assets/Images/anchovy.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A bold pizza with tomato sauce, mozzarella, and anchovy fillets."
-    },
-    {
-        "name": "Sicilian",
-        "image": "Assets/Images/sicilian.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A thick-crust pizza with tomato sauce, mozzarella, onions, anchovies, and herbs."
-    },
-    {
-        "name": "Neapolitan",
-        "image": "Assets/Images/neapolitan.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A traditional Neapolitan pizza with tomato sauce, fresh mozzarella, and basil."
-    },
-    {
-        "name": "Garlic Chicken",
-        "image": "Assets/Images/garlic_chicken.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A savory pizza with garlic sauce, mozzarella, and grilled chicken."
-    },
-    {
-        "name": "Truffle",
-        "image": "Assets/Images/truffle.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A luxurious pizza with truffle cream, mozzarella, and truffle shavings."
-    },
-    {
-        "name": "Artichoke",
-        "image": "Assets/Images/artichoke.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A delicious pizza with tomato sauce, mozzarella, and marinated artichoke hearts."
-    },
-    {
-        "name": "Beef",
-        "image": "Assets/Images/beef.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A hearty pizza with tomato sauce, mozzarella, and sliced beef."
-    },
-    {
-        "name": "Ricotta",
-        "image": "Assets/Images/ricotta.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A creamy pizza with tomato sauce, mozzarella, and dollops of ricotta cheese."
-    },
-    {
-        "name": "Buffalo Mozzarella",
-        "image": "Assets/Images/buffalo_mozzarella.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A gourmet pizza with tomato sauce, fresh buffalo mozzarella, and basil."
-    },
-    {
-        "name": "Smoked Salmon",
-        "image": "Assets/Images/smoked_salmon.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A luxurious pizza with cream cheese, mozzarella, smoked salmon, and capers."
-    },
-    {
-        "name": "Clam",
-        "image": "Assets/Images/clam.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A seafood pizza with garlic sauce, mozzarella, and fresh clams."
-    },
-    {
-        "name": "Calabrese",
-        "image": "Assets/Images/calabrese.jpg",
-        "order": { "quantity": 0, "size": "small" },
-        "description": "A spicy pizza with tomato sauce, mozzarella, and spicy Calabrese salami."
+        "description": "Penne pasta in a spicy tomato sauce with garlic and red chili flakes.",
+        "type": "pasta"
     }
 ]

@@ -1,0 +1,18 @@
+{
+    "pizza" : {
+        "sizes" : {
+            "small" :{
+                "displayName" : "SMALL - 28CM"
+            },
+            "medium" :{
+                "displayName" : "MEDIUM - 32CM"
+            },
+            "big" :{
+                "displayName" : "BIG - 40CM"
+            },
+            "giant" :{
+                "displayName" : "GIANT - 50CM"
+            }
+        }
+    }
+}

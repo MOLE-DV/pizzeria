@@ -7,19 +7,43 @@
     background-color: white
     color: black
     position: fixed
-    bottom: calc(1vh + 1vw)
     right: calc(1vh + 1vw)
-    z-index: 99999
+    z-index: 100
     height: calc( 3vh + 3vw)
     width: calc(18vh + 18vw)
+    bottom: calc(-5vh - 5vw)
     border-radius: calc( .5vh + .5vw )
     display: flex
     padding-inline: calc(1vh + 1vw)
     box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.596)
     justify-content: center
+    align-items: center
+    transition: .5s
+
+    .top
+        width: 100%
+        height: calc(calc(3vh + 3vw) - calc(.2vh + .2vw))
+        display: flex
+        justify-content: center
+        align-items: center
+
+    .icon
+        width: calc(2vh + 2vw)
+        height: calc(2vh + 2vw)
+        position: absolute
+        margin: calc(1vh + 1vw)
+        background-image: URL('../../../public/Assets/Images/exclamamation.svg')
+        background-position: center
+        background-size: 100%
+        background-repeat: no-repeat
+        left: 0
+        top: calc(-.5vh - .5vw)
+        z-index: 99999
+        border-radius: calc(1vh + 1vw)
 
     .message
-        font-size: calc(1vh + 1vw)
+        font-size: calc(.7vh + .7vw)
+        margin-left: calc(2vh + 2vw)
         
 
     .slider
@@ -29,3 +53,30 @@
         left: 0
         height: calc(.2vh + .2vw)
         background: rgb(255, 88, 88)
+        animation: 3s slider forwards linear
+
+.goUp
+    animation: .5s goUp forwards
+
+.goDown
+    animation: .5s goDown forwards
+
+
+@keyframes goUp 
+    from 
+        bottom: calc(-5vh - 5vw)
+    to
+        bottom: calc(1vh + 1vw)
+
+@keyframes goDown
+    from
+        bottom: calc(1vh + 1vw)
+    to
+        bottom: calc(-5vh - 5vw)
+
+@keyframes slider 
+    from
+        width: 0%
+    to
+        width: 100%    
+

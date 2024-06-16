@@ -13,6 +13,32 @@
         text-transform: uppercase
         font-family: Sellena
 
+    .filters
+        border-bottom: calc(.05vh + .05vw) solid black
+        width: 100vw
+        height: calc(2vh + 2vw)
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        box-sizing: border-box
+        padding-inline: calc(2.5vh + 2.5vw)
+
+        .types-label
+            height: calc(2vh + 2vw)
+            padding-inline: calc(1vh + 1vw)
+            display: flex
+            justify-content: center
+            align-items: center
+            font-size: calc(.7vh + .7vw)
+            font-weight: bold
+
+            .types
+                margin-left: calc(.5vh + .5vw)
+                border: none
+                outline: none
+                cursor: pointer
+                font-size: calc(.7vh + .7vw)
+
     .bottom
         $elements_side_distance: calc(1vh + 1vw)
         width: 100vw
@@ -33,7 +59,13 @@
         gap: calc(1vh + 1vw)
         justify-content: center
 
+        .dish-type
+            position: absolute
+            z-index: 9999
 
+        .dish-container
+            overflow: visible
+        
         .pizza
             overflow: hidden
             position: relative
