@@ -2,7 +2,7 @@
     width: 100vw
     height: calc(2vh + 2vw)
     position: absolute
-    
+    overflow: visible
     display: flex
     justify-content: space-around
 
@@ -16,27 +16,33 @@
         overflow: visible
         display: flex
         padding-inline: calc(.5vh + .5vw)
-        color: white
+        color: black
         font-size: calc(.75vh + .75vw)
         font-weight: bold
-        opacity: .8
+        opacity: .7
         letter-spacing: calc(.1vh + .1vw)
         text-transform: uppercase
         cursor: pointer
         user-select: none
         transition: .25s
-        height: 100%
-        text-shadow: 0 0 calc(.1vh + .1vw) rgba(0,0,0,0.9)
-        
+        height: 70%
+        background: white 
+        display: flex
+        justify-content: center
+        align-items: center
+        padding-bottom: calc(.25vh + .25vw)
+        border-radius: 0 0 calc(1vh + 1vw) calc(1vh + 1vw)
+    
     
     .button:hover
         opacity: 1
+        height: 100%
 
 #header.fixed
     user-select: none
     position: fixed
     height: calc(2vh + 2vw)
-    background: rgba(0, 0, 0, 0.281)
+    background: rgba(0, 0, 0, 0.747)
     backdrop-filter: blur(calc(.1vh + .1vw))
     display: flex
     align-items: center
@@ -64,6 +70,8 @@
         text-shadow: 0 0 calc(.1vh + .1vw) rgba(0,0,0,0.9)
 
     .button
+        color: white
+        background: none
         height: 100%
         display: flex
         align-items: center
