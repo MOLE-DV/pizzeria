@@ -46,7 +46,8 @@ const Menu = () => {
             else if(dishCount >= dishLimit){            
                 data.setPopup((elements) =>
                     [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}`}/>]
-                )    
+                ) 
+ 
             }
 
             return dish[1];
@@ -63,10 +64,6 @@ const Menu = () => {
                 [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image}/>]
             )
 
-        }else if(dishCount >= dishLimit){
-            data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}`}/>]
-            )
         }
     }
 
@@ -78,6 +75,11 @@ const Menu = () => {
         }));
         dishCountQuery = 0;
     }
+
+
+    useEffect(() => {
+
+    }, []);
 
 
     return (
@@ -121,9 +123,9 @@ const Menu = () => {
                                             <div className="order" onClick={() => addToCart(index)}>order</div>
                                             
                                             <div className="quanity-container">
-                                                <div className="button minus" onMouseDown={() => changeQuanity(index,-1)}></div>
+                                                <div className="button minus" onMouseUp={() => changeQuanity(index,-1)}></div>
                                                 <div className="quanity">{dish.order.quantity}</div>
-                                                <div className="button plus" onMouseDown={() => changeQuanity(index,1)}></div>
+                                                <div className="button plus" onMouseUp={() => changeQuanity(index,1)}></div>
                                             </div>
 
                                             {
