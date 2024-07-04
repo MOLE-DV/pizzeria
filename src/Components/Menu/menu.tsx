@@ -14,11 +14,15 @@ interface dishFilters{
     [key:string] : string
 }
 
+
+
+
 const Menu = () => {
     const data = useContext(popupContext);
 
     let dishLimit = 20;
-
+    const [cart, setCart] = useState<{[key:string] : string | number }[]>([{}])
+    const [cartContentSize, setCartSize] = useState(0);
     let [dishData, setDishData] = useState(order);
     let [dishCount, setDishCount] = useState(0)
     let [dishFilters, setDishFilters] = useState<dishFilters>({
@@ -43,7 +47,7 @@ const Menu = () => {
                 setDishCount(dishCount += number);
                 
             }
-            else if(dishCount >= dishLimit){            
+            else if(dishCount >= dishLimit || cartContentSize >= dishLimit) {            
                 data.setPopup((elements) =>
                     [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}`}/>]
                 ) 
@@ -59,13 +63,21 @@ const Menu = () => {
     const addToCart = (dishIndex:number) => {
         const dish = dishData[dishIndex];
 
-        if(dish.order.quantity > 0 && dishCount < dishLimit){
+        if(dish.order.quantity > 0 && dishCount < dishLimit && cartContentSize < dishLimit){
+            setCart(cartcontent => [...cartcontent, {
+                name: dish.name,
+                type: dish.type,
+                size: dish.order.size,
+                quantity: dish.order.quantity
+            }])
             data.setPopup((elements) =>
                 [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image}/>]
             )
 
         }
     }
+
+    
 
     let dishCountQuery = 0;
     const addToDishFilters = (filter: { [id: string] : string}) => {
@@ -76,10 +88,14 @@ const Menu = () => {
         dishCountQuery = 0;
     }
 
-
     useEffect(() => {
-
-    }, []);
+        let sum = 0;
+        Object.entries(cart).forEach(item => {
+            if(Object.keys(item[1]).length > 0) sum += item[1].quantity as number;
+        })
+        setCartSize(sum);
+        console.log(sum);
+    })
 
 
     return (
