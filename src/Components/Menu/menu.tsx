@@ -41,16 +41,13 @@ const Menu = () => {
 
     const changeQuanity = (dishIndex:number, number: number) => { 
         let changedDishData = Array.from(Object.entries(dishData).map((dish, index) => {
-            console.log(dishCount, cartContentSize, dishCount >= dishLimit || cartContentSize + dish[1].order.quantity >= dishLimit);
-
-            if(index === dishIndex && ((dish[1].order.quantity > 0 && number < 0) || ((number > 0 && dishCount < dishLimit) && (cartContentSize + dish[1].order.quantity + number < dishLimit) && number > 0))) { 
+            if(index === dishIndex && ((dish[1].order.quantity > 0 && number < 0) || ((number > 0 && dishCount < dishLimit) && (cartContentSize + dish[1].order.quantity + number <= dishLimit) && number > 0))) { 
                 dish[1].order.quantity = dish[1].order.quantity += number;
                 setDishCount(dishCount += number);
             }
-            else if(dishCount >= dishLimit || cartContentSize + dish[1].order.quantity + number >= dishLimit) {        
-                
+            else if(index === dishIndex && cartContentSize + dish[1].order.quantity + number > dishLimit) {        
                 data.setPopup((elements) =>
-                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}, ${dishLimit - cartContentSize > 0 ? `you can only add ${dishLimit - cartContentSize} more item/s` : ''} `}/>]
+                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `}/>]
                 ) 
  
             }
@@ -63,7 +60,7 @@ const Menu = () => {
     const addToCart = (dishIndex:number) => {
         const dish = dishData[dishIndex];
 
-        if(dish.order.quantity > 0 && dishCount < dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
+        if(dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
             setCart(cartcontent => [...cartcontent, {
                 name: dish.name,
                 type: dish.type,
@@ -76,7 +73,7 @@ const Menu = () => {
 
         }else if(cartContentSize + dish.order.quantity >= dishLimit){
             data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}`}/>]
+                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `}/>]
             ) 
         }
     }
@@ -97,7 +94,6 @@ const Menu = () => {
         Object.entries(cart).forEach(item => {
             if(Object.keys(item[1]).length > 0) sum += item[1].quantity as number;
         })
-        console.log(sum);
         setCartSize(sum);
     })
 
