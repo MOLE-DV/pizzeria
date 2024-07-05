@@ -27,13 +27,25 @@ const Popup = (props:any) => {
             await delay(250);
 
             setVisible(false)
-          }
-          makeRequest();
+        }
+
+        makeRequest();
     }, [])
 
+
+    async function viewCartContent() {
+        document.querySelector('#cart')?.scrollIntoView({behavior: 'smooth'})
+        
+        setAnimation('goDown');
+            
+        await delay(250);
+
+        setVisible(false)
+    }
+ 
     return visible ? (
         <div id="popup"  className={animation}>
-            <div className="top">
+            <div className="top" onClick={() => props.type === "cart-update" ? viewCartContent() : ""}>
                 <div className="icon" style={{backgroundImage: `URL(${icon})`}}></div>
                 <h1 className="message">{props.message}</h1>
             </div>

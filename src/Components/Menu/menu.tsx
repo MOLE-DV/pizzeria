@@ -9,12 +9,11 @@ import { useEffect, useState, useContext, ReactElement } from 'react';
 import order from '../../Data/order.json'
 import popupContext from '../popupContext';
 import Popup from '../Popup/popup';
+import Cart from '../Cart/Cart';
 
 interface dishFilters{
     [key:string] : string
 }
-
-
 
 
 const Menu = () => {
@@ -47,7 +46,7 @@ const Menu = () => {
             }
             else if(index === dishIndex && cartContentSize + dish[1].order.quantity + number > dishLimit) {        
                 data.setPopup((elements) =>
-                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `}/>]
+                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `} type="cart-update" />]
                 ) 
  
             }
@@ -68,17 +67,15 @@ const Menu = () => {
                 quantity: dish.order.quantity
             }])
             data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image}/>]
+                [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image} type="cart-update" />]
             )
 
         }else if(cartContentSize + dish.order.quantity >= dishLimit){
             data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `}/>]
+                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `} type="warning" />]
             ) 
         }
     }
-
-    
 
     let dishCountQuery = 0;
     const addToDishFilters = (filter: { [id: string] : string}) => {
@@ -182,6 +179,8 @@ const Menu = () => {
                     }
                 </div>
             </section>
+            <Cart></Cart>
+            {/* {cartContentSize > 0 ? <Cart /> : null} */}
         </main>
     )
 }
