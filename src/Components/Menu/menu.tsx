@@ -20,7 +20,7 @@ const Menu = () => {
     const data = useContext(popupContext);
 
     let dishLimit = 20;
-    const [cart, setCart] = useState<{[key:string] : string | number }[]>([{}])
+    const [cart, setCart] = useState<{[key:string] : string | number }[]>([])
     const [cartContentSize, setCartSize] = useState(0);
     let [dishData, setDishData] = useState(order);
     let [dishCount, setDishCount] = useState(0)
@@ -60,12 +60,35 @@ const Menu = () => {
         const dish = dishData[dishIndex];
 
         if(dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
-            setCart(cartcontent => [...cartcontent, {
-                name: dish.name,
-                type: dish.type,
-                size: dish.order.size,
-                quantity: dish.order.quantity
-            }])
+            let foundIndex = cart.findIndex((cartItem) => {
+                return cartItem.name === dish.name && cartItem.size === dish.order.size
+            })
+            if(foundIndex == -1) {
+                console.log(dish.order.size) 
+                setCart(cartcontent => [...cartcontent, {
+                    name: dish.name,
+                    type: dish.type,
+                    size: dish.order.size,
+                    quantity: dish.order.quantity
+                }])
+            }else{
+                setCart(cartContent => cartContent.map((cartItem, index) => {
+                    return index !== foundIndex ?{
+                        name: cartItem.name,
+                        type: cartItem.type,
+                        size: cartItem.size,
+                        quantity: cartItem.quantity
+                    }
+                    :
+                    {
+                        name: dish.name,
+                        type: dish.type,
+                        size: dish.order.size,
+                        quantity: Number(cartItem.quantity) + Number(dish.order.quantity) 
+                    }
+                }))
+            }
+
             data.setPopup((elements) =>
                 [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image} type="cart-update" />]
             )
@@ -92,6 +115,7 @@ const Menu = () => {
             if(Object.keys(item[1]).length > 0) sum += item[1].quantity as number;
         })
         setCartSize(sum);
+        console.log(cart)
     })
 
 
@@ -179,7 +203,7 @@ const Menu = () => {
                     }
                 </div>
             </section>
-            <Cart></Cart>
+            <Cart items={cart} />
             {/* {cartContentSize > 0 ? <Cart /> : null} */}
         </main>
     )
