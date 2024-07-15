@@ -58,17 +58,19 @@ const Menu = () => {
 
     const addToCart = (dishIndex:number) => {
         const dish = dishData[dishIndex];
+        const dishPrice = Object.entries(dish.price).find(price => price[0] === dish.order.size || dish.order.size === "")![1] as number;
 
         if(dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
             let foundIndex = cart.findIndex((cartItem) => {
                 return cartItem.name === dish.name && cartItem.size === dish.order.size
             })
             if(foundIndex == -1) {
-                console.log(dish.order.size) 
                 setCart(cartcontent => [...cartcontent, {
                     name: dish.name,
                     type: dish.type,
                     size: dish.order.size,
+                    price: dishPrice,
+                    image: dish.image,
                     quantity: dish.order.quantity
                 }])
             }else{
@@ -77,6 +79,8 @@ const Menu = () => {
                         name: cartItem.name,
                         type: cartItem.type,
                         size: cartItem.size,
+                        price: cartItem.price,
+                        image: cartItem.image,
                         quantity: cartItem.quantity
                     }
                     :
@@ -84,13 +88,16 @@ const Menu = () => {
                         name: dish.name,
                         type: dish.type,
                         size: dish.order.size,
+                        price: dishPrice,
+                        image: dish.image,
                         quantity: Number(cartItem.quantity) + Number(dish.order.quantity) 
                     }
                 }))
             }
 
+            
             data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image} type="cart-update" />]
+                [...elements as ReactElement[], <Popup message={`[${dish.order.size != '' ? `${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ` : '' }${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added for ${dishPrice * dish.order.quantity}$`} icon={dish.image} type="cart-update" />]
             )
 
         }else if(cartContentSize + dish.order.quantity >= dishLimit){
@@ -115,7 +122,6 @@ const Menu = () => {
             if(Object.keys(item[1]).length > 0) sum += item[1].quantity as number;
         })
         setCartSize(sum);
-        console.log(cart)
     })
 
 
@@ -155,6 +161,13 @@ const Menu = () => {
                                         <div className='image' style={{backgroundImage: `URL(${dish.image })`}} />
                                         <div id="bottom">
                                             <div className="name">{dish.name}</div>
+                                            <div className="price">
+                                                {
+                                                    Object.entries(dish.price).map(price => {
+                                                        return price[0] === dish.order.size ? `${price[1] * (dish.order.quantity === 0 ? 1 : dish.order.quantity)}$` : ''
+                                                    })
+                                                }
+                                            </div>
                                             <div className="description">{dish.description}</div>
 
                                             <div className="order" onClick={() => addToCart(index)}>order</div>
@@ -203,7 +216,7 @@ const Menu = () => {
                     }
                 </div>
             </section>
-            <Cart items={cart} />
+            <Cart items={cart} orderSize={cartContentSize} />
             {/* {cartContentSize > 0 ? <Cart /> : null} */}
         </main>
     )
