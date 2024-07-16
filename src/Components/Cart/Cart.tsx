@@ -1,6 +1,15 @@
 import './cart.sass';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+interface Item {
+    name: string,
+    type: string,
+    size: string,
+    price: number,
+    image: string,
+    quantity: number
+}
 
 const Cart = (props: any) => {
 
@@ -10,9 +19,9 @@ const Cart = (props: any) => {
 
             <div id="bottom">
                 <section className="left">
-                    <h1>All items: {props.orderSize}</h1>
+                    <h1>All items: {props.orderSize} Total cost: {props.totalCost}$</h1>
                     {
-                        props.items.map((item: {[key: string] : string | number})=> {
+                        props.items.map((item: Item)=> {
                             if(props.items.length < 1) return
                             return (
                                 <div className='orderItem'>

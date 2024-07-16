@@ -22,8 +22,11 @@ const Menu = () => {
     let dishLimit = 20;
     const [cart, setCart] = useState<{[key:string] : string | number }[]>([])
     const [cartContentSize, setCartSize] = useState(0);
+    const [totalCartCost, setTotalCartCost] = useState(0);
+
     let [dishData, setDishData] = useState(order);
     let [dishCount, setDishCount] = useState(0)
+
     let [dishFilters, setDishFilters] = useState<dishFilters>({
         dishType: 'none'
     });
@@ -61,6 +64,8 @@ const Menu = () => {
         const dishPrice = Object.entries(dish.price).find(price => price[0] === dish.order.size || dish.order.size === "")![1] as number;
 
         if(dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
+            setTotalCartCost(totalCartCost + (dishPrice * dish.order.quantity));
+            
             let foundIndex = cart.findIndex((cartItem) => {
                 return cartItem.name === dish.name && cartItem.size === dish.order.size
             })
@@ -155,6 +160,8 @@ const Menu = () => {
                             
                             dishCountQuery++;
 
+                            const price = Object.entries(dish.price).find(price => price[0] === dish.order.size || dish.order.size === "")![1] as number
+                            
                             return(
                                 <div className="dish-container">
                                     <div className="pizza" key={index}>
@@ -163,9 +170,7 @@ const Menu = () => {
                                             <div className="name">{dish.name}</div>
                                             <div className="price">
                                                 {
-                                                    Object.entries(dish.price).map(price => {
-                                                        return price[0] === dish.order.size ? `${price[1] * (dish.order.quantity === 0 ? 1 : dish.order.quantity)}$` : ''
-                                                    })
+                                                    price * (dish.order.quantity === 0 ? 1 : dish.order.quantity) + '$'
                                                 }
                                             </div>
                                             <div className="description">{dish.description}</div>
@@ -216,7 +221,7 @@ const Menu = () => {
                     }
                 </div>
             </section>
-            <Cart items={cart} orderSize={cartContentSize} />
+            <Cart items={cart} orderSize={cartContentSize} totalCost={totalCartCost}/>
             {/* {cartContentSize > 0 ? <Cart /> : null} */}
         </main>
     )
