@@ -12,7 +12,7 @@ const Popup = (props:any) => {
 
     useEffect(() =>{
         if(props.icon !== undefined) setIcon(props.icon);
-        
+
     }, [icon])
 
 
@@ -34,7 +34,7 @@ const Popup = (props:any) => {
 
 
     async function viewCartContent() {
-        document.querySelector('#cart')?.scrollIntoView({behavior: 'smooth'})
+        document.querySelector('#cart')!.scrollIntoView()
         
         setAnimation('goDown');
             
