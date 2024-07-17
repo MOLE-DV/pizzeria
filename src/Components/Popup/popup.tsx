@@ -12,7 +12,7 @@ const Popup = (props:any) => {
 
     useEffect(() =>{
         if(props.icon !== undefined) setIcon(props.icon);
-
+        
     }, [icon])
 
 
