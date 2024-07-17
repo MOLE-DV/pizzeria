@@ -9,22 +9,24 @@ import { useEffect, useState, useContext, ReactElement } from 'react';
 import order from '../../Data/order.json'
 import popupContext from '../popupContext';
 import Popup from '../Popup/popup';
+import Cart from '../Cart/Cart';
 
 interface dishFilters{
     [key:string] : string
 }
 
 
-
-
 const Menu = () => {
     const data = useContext(popupContext);
 
     let dishLimit = 20;
-    const [cart, setCart] = useState<{[key:string] : string | number }[]>([{}])
+    const [cart, setCart] = useState<{[key:string] : string | number }[]>([])
     const [cartContentSize, setCartSize] = useState(0);
+    const [totalCartCost, setTotalCartCost] = useState(0);
+
     let [dishData, setDishData] = useState(order);
     let [dishCount, setDishCount] = useState(0)
+
     let [dishFilters, setDishFilters] = useState<dishFilters>({
         dishType: 'none'
     });
@@ -41,16 +43,13 @@ const Menu = () => {
 
     const changeQuanity = (dishIndex:number, number: number) => { 
         let changedDishData = Array.from(Object.entries(dishData).map((dish, index) => {
-            console.log(dishCount, cartContentSize, dishCount >= dishLimit || cartContentSize + dish[1].order.quantity >= dishLimit);
-
-            if(index === dishIndex && ((dish[1].order.quantity > 0 && number < 0) || ((number > 0 && dishCount < dishLimit) && (cartContentSize + dish[1].order.quantity + number < dishLimit) && number > 0))) { 
+            if(index === dishIndex && ((dish[1].order.quantity > 0 && number < 0) || ((number > 0 && dishCount < dishLimit) && (cartContentSize + dish[1].order.quantity + number <= dishLimit) && number > 0))) { 
                 dish[1].order.quantity = dish[1].order.quantity += number;
                 setDishCount(dishCount += number);
             }
-            else if(dishCount >= dishLimit || cartContentSize + dish[1].order.quantity + number >= dishLimit) {        
-                
+            else if(index === dishIndex && cartContentSize + dish[1].order.quantity + number > dishLimit) {        
                 data.setPopup((elements) =>
-                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}, ${dishLimit - cartContentSize > 0 ? `you can only add ${dishLimit - cartContentSize} more item/s` : ''} `}/>]
+                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `} type="cart-update" />]
                 ) 
  
             }
@@ -62,26 +61,56 @@ const Menu = () => {
 
     const addToCart = (dishIndex:number) => {
         const dish = dishData[dishIndex];
+        const dishPrice = Object.entries(dish.price).find(price => price[0] === dish.order.size || dish.order.size === "")![1] as number;
 
-        if(dish.order.quantity > 0 && dishCount < dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
-            setCart(cartcontent => [...cartcontent, {
-                name: dish.name,
-                type: dish.type,
-                size: dish.order.size,
-                quantity: dish.order.quantity
-            }])
+        if(dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
+            setTotalCartCost(totalCartCost + (dishPrice * dish.order.quantity));
+            
+            let foundIndex = cart.findIndex((cartItem) => {
+                return cartItem.name === dish.name && cartItem.size === dish.order.size
+            })
+            if(foundIndex == -1) {
+                setCart(cartcontent => [...cartcontent, {
+                    name: dish.name,
+                    type: dish.type,
+                    size: dish.order.size,
+                    price: dishPrice,
+                    image: dish.image,
+                    quantity: dish.order.quantity
+                }])
+            }else{
+                setCart(cartContent => cartContent.map((cartItem, index) => {
+                    return index !== foundIndex ?{
+                        name: cartItem.name,
+                        type: cartItem.type,
+                        size: cartItem.size,
+                        price: cartItem.price,
+                        image: cartItem.image,
+                        quantity: cartItem.quantity
+                    }
+                    :
+                    {
+                        name: dish.name,
+                        type: dish.type,
+                        size: dish.order.size,
+                        price: dishPrice,
+                        image: dish.image,
+                        quantity: Number(cartItem.quantity) + Number(dish.order.quantity) 
+                    }
+                }))
+            }
+
+            
             data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`[${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added`} icon={dish.image}/>]
+                [...elements as ReactElement[], <Popup message={`[${dish.order.size != '' ? `${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ` : '' }${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added for ${dishPrice * dish.order.quantity}$`} icon={dish.image} type="cart-update" />]
             )
 
         }else if(cartContentSize + dish.order.quantity >= dishLimit){
             data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}`}/>]
+                [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit} ${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''} `} type="warning" />]
             ) 
         }
     }
-
-    
 
     let dishCountQuery = 0;
     const addToDishFilters = (filter: { [id: string] : string}) => {
@@ -97,7 +126,6 @@ const Menu = () => {
         Object.entries(cart).forEach(item => {
             if(Object.keys(item[1]).length > 0) sum += item[1].quantity as number;
         })
-        console.log(sum);
         setCartSize(sum);
     })
 
@@ -132,12 +160,19 @@ const Menu = () => {
                             
                             dishCountQuery++;
 
+                            const price = Object.entries(dish.price).find(price => price[0] === dish.order.size || dish.order.size === "")![1] as number
+                            
                             return(
                                 <div className="dish-container">
                                     <div className="pizza" key={index}>
                                         <div className='image' style={{backgroundImage: `URL(${dish.image })`}} />
                                         <div id="bottom">
                                             <div className="name">{dish.name}</div>
+                                            <div className="price">
+                                                {
+                                                    price * (dish.order.quantity === 0 ? 1 : dish.order.quantity) + '$'
+                                                }
+                                            </div>
                                             <div className="description">{dish.description}</div>
 
                                             <div className="order" onClick={() => addToCart(index)}>order</div>
@@ -186,6 +221,8 @@ const Menu = () => {
                     }
                 </div>
             </section>
+            <Cart items={cart} orderSize={cartContentSize} totalCost={totalCartCost}/>
+            {/* {cartContentSize > 0 ? <Cart /> : null} */}
         </main>
     )
 }
