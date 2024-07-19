@@ -33,7 +33,7 @@ const Header = () => {
                 </div>
             </header>
 
-            <header id="header-fixed">
+            <header id="header-fixed" className='fixed none'>
                 <div className="left">
                     <div className="title">Bella Vista</div>
                 </div>

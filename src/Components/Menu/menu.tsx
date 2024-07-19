@@ -221,8 +221,7 @@ const Menu = () => {
                     }
                 </div>
             </section>
-            <Cart items={cart} orderSize={cartContentSize} totalCost={totalCartCost}/>
-            {/* {cartContentSize > 0 ? <Cart /> : null} */}
+            {cartContentSize > 0 ? <Cart items={cart} orderSize={cartContentSize} totalCost={totalCartCost}/> : null}
         </main>
     )
 }

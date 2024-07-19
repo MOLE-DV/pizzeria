@@ -19,7 +19,6 @@ const Cart = (props: any) => {
 
             <div id="bottom">
                 <section className="left">
-                    <h1>All items: {props.orderSize} Total cost: {props.totalCost}$</h1>
                     {
                         props.items.map((item: Item)=> {
                             if(props.items.length < 1) return
@@ -38,7 +37,18 @@ const Cart = (props: any) => {
                     }
                 </section>
                 <section className="right">
-                    
+                    <form action="" method="post">
+                        <label>Name: <input type="text" /></label>
+                        <label>Surname: <input type="text" /></label>
+                        <label>City: <input type="text" /></label>
+                        <label>Street: <input type="text" placeholder=''/></label>
+                        <label>House number: <input type="text" /></label>
+                        <div id="info">
+                            <h2>Items in cart [{props.orderSize}], Total cost [{props.totalCost}$]</h2>
+                        </div>
+                        <input type="submit" value="Order" /> <input type="reset" value="Reset" />
+                    </form>
+
                 </section>
             </div>
         </div>
