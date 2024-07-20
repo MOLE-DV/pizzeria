@@ -37,65 +37,69 @@ $cart-height: 70vh
         height: 100%
 
 
-    .left::-webkit-scrollbar
-        display: block
-        background: rgba(255, 255, 255, 0.61)
 
-    .left::-webkit-scrollbar-thumb
-        background: var(--dirty-red)
 
     .left
-        padding-inline: calc(1vh + 1vw)
-        overflow-y: auto
-        display: flex
-        flex-direction: column
-        padding-top: calc(1vh + 1vw)
-        padding-bottom: calc(1vh + 1vw)
+        overflow: visible
 
-        .orderItem:hover
+        
+
+        #orderItems::-webkit-scrollbar
+            display: block
+            background: rgba(255, 255, 255, 0.61)
+            width: calc(.4vh + .4vw)
+
+        #orderItems::-webkit-scrollbar-thumb
             background: var(--dirty-red)
-            color: white
 
-            .left-order
-                .icon-order
-                    border-color: white
+        #orderItems
+            height: 100%
+            overflow-y: auto
+            overflow-x: hidden
+    
+            .orderItem:hover
+                background: var(--dirty-red)
+                color: white
+                scale: 1.01
 
-        .orderItem
-            overflow: visible
-            transition: .1s
-            box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.267)
-            $top-down-padding: calc(.5vh + .5vw)
-            width: 100%
-            background-color: white
-            display: flex
-            padding-top: $top-down-padding
-            padding-bottom: $top-down-padding
-            border-top: calc(.05vh + .05vw) solid black
+                .left-order
+                    .icon-order
+                        border-color: white
 
-            .left-order, .right-order
+            .orderItem
+                overflow: visible
+                transition: .1s
+                box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.267)
+                $top-down-padding: calc(.5vh + .5vw)
+                width: 100%
+                background-color: white
                 display: flex
+                padding-top: $top-down-padding
+                padding-bottom: $top-down-padding
+                .left-order, .right-order
+                    display: flex
 
-            .left-order
-                width: 70%
-                padding-left: $top-down-padding
-                display: flex
-                align-items: center
+                .left-order
+                    width: 70%
+                    padding-left: $top-down-padding
+                    display: flex
+                    align-items: center
 
-                .icon-order
-                    height: calc(3vh + 3vw)
-                    border-radius: 50%
-                    border: calc(.05vh + .05vw) solid black
+                    .icon-order
+                        height: calc(3vh + 3vw)
+                        border-radius: 50%
+                        border: calc(.05vh + .05vw) solid black
 
-                    width: calc(3vh + 3vw)
-                    background-position: center
-                    background-size: cover
-                    background-repeat: no-repeat
+                        width: calc(3vh + 3vw)
+                        background-position: center
+                        background-size: cover
+                        background-repeat: no-repeat
 
-                .title-order
-                    font-family: Arial, Helvetica, sans-serif
-                    font-size: calc(1vh + 1vw)
-                    margin-left: calc(1vh + 1vw)
-                    font-weight: bold
+                    .title-order
+                        font-family: Arial, Helvetica, sans-serif
+                        font-size: calc(1vh + 1vw)
+                        margin-left: calc(1vh + 1vw)
+                        font-weight: bold
 
         .right-order
             display: flex
@@ -103,12 +107,12 @@ $cart-height: 70vh
             align-items: center
             
 
-        .orderItem:last-child
-            border-radius: 0 0 calc(1vh + 1vw) calc(1vh + 1vw)
+        // .orderItem:last-child
+        //     border-radius: 0 0 calc(1vh + 1vw) calc(1vh + 1vw)
             
-        .orderItem:nth-child(1)
-            border-top: none
-            border-radius: calc(1vh + 1vw) calc(1vh + 1vw) 0 0
+        // .orderItem:nth-child(1)
+        //     border-top: none
+        //     border-radius: calc(1vh + 1vw) calc(1vh + 1vw) 0 0
 
     .right
         background: white

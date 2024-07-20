@@ -10,11 +10,11 @@ import order from '../../Data/order.json'
 import popupContext from '../popupContext';
 import Popup from '../Popup/popup';
 import Cart from '../Cart/Cart';
+import CartItemsContext from '../Cart/CartItemsContext';
 
 interface dishFilters{
     [key:string] : string
 }
-
 
 const Menu = () => {
     const data = useContext(popupContext);
@@ -63,9 +63,7 @@ const Menu = () => {
         const dish = dishData[dishIndex];
         const dishPrice = Object.entries(dish.price).find(price => price[0] === dish.order.size || dish.order.size === "")![1] as number;
 
-        if(dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit){
-            setTotalCartCost(totalCartCost + (dishPrice * dish.order.quantity));
-            
+        if(dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit){            
             let foundIndex = cart.findIndex((cartItem) => {
                 return cartItem.name === dish.name && cartItem.size === dish.order.size
             })
@@ -76,7 +74,8 @@ const Menu = () => {
                     size: dish.order.size,
                     price: dishPrice,
                     image: dish.image,
-                    quantity: dish.order.quantity
+                    quantity: dish.order.quantity,
+                    dishIndex: dishIndex
                 }])
             }else{
                 setCart(cartContent => cartContent.map((cartItem, index) => {
@@ -86,7 +85,8 @@ const Menu = () => {
                         size: cartItem.size,
                         price: cartItem.price,
                         image: cartItem.image,
-                        quantity: cartItem.quantity
+                        quantity: cartItem.quantity,
+                        dishIndex: cartItem.dishIndex
                     }
                     :
                     {
@@ -95,7 +95,8 @@ const Menu = () => {
                         size: dish.order.size,
                         price: dishPrice,
                         image: dish.image,
-                        quantity: Number(cartItem.quantity) + Number(dish.order.quantity) 
+                        quantity: Number(cartItem.quantity) + Number(dish.order.quantity),
+                        dishIndex: dishIndex
                     }
                 }))
             }
@@ -123,9 +124,13 @@ const Menu = () => {
 
     useEffect(() => {
         let sum = 0;
+        let totalCost = 0;
         Object.entries(cart).forEach(item => {
+            totalCost += item[1].price as number * Number(item[1].quantity)
             if(Object.keys(item[1]).length > 0) sum += item[1].quantity as number;
         })
+        setTotalCartCost(totalCost)
+        console.log(totalCartCost);
         setCartSize(sum);
     })
 
@@ -221,7 +226,10 @@ const Menu = () => {
                     }
                 </div>
             </section>
-            {cartContentSize > 0 ? <Cart items={cart} orderSize={cartContentSize} totalCost={totalCartCost}/> : null}
+            <CartItemsContext.Provider value={{cart, setCart}}>
+                {cartContentSize > 0 ? <Cart orderSize={cartContentSize} totalCost={totalCartCost} /> : null}
+            </CartItemsContext.Provider>
+            
         </main>
     )
 }

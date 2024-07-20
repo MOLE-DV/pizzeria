@@ -1,17 +1,20 @@
 import './cart.sass';
 import React from 'react';
-import { useState, useEffect } from 'react';
-
-interface Item {
-    name: string,
-    type: string,
-    size: string,
-    price: number,
-    image: string,
-    quantity: number
-}
+import { useState, useEffect, useContext } from 'react';
+import CartItemsContext from './CartItemsContext';
 
 const Cart = (props: any) => {
+    const cartContext = useContext(CartItemsContext);
+
+    const removeFromCart = (cartIndex:number) => {
+        const item = cartContext.cart!.find((cartItem, index) => index === cartIndex)
+        const cart = cartContext.cart
+        cart!.splice(cartIndex,1);
+        if(cart === null) return
+        cartContext.setCart(cart);
+    }
+    
+    let totalcost = 0;
 
     return (
         <div id="cart">
@@ -19,22 +22,25 @@ const Cart = (props: any) => {
 
             <div id="bottom">
                 <section className="left">
+                    <div id="orderItems">
                     {
-                        props.items.map((item: Item)=> {
-                            if(props.items.length < 1) return
+                        cartContext.cart!.map((item: {[key:string] : string | number}, index: number)=> {
+                            if(cartContext.cart!.length < 1) return
                             return (
-                                <div className='orderItem'>
+                                <div className='orderItem' key={index}>
                                     <div className="left-order">
                                         <div className="icon-order" style={{backgroundImage: `URL(${item.image})`}}></div>
                                         <div className="title-order">{item.size != '' ? `${item.size.toString().charAt(0).toUpperCase() + item.size.toString().slice(1)} ` : null }{item.name} x {item.quantity}</div>
                                     </div>
                                     <div className="right-order">
                                         price: {item.price as number * Number(item.quantity)}$
+                                        <button onClick={() => removeFromCart(index)}>Remove</button>
                                     </div>
                                 </div>
                             )
                         })
                     }
+                    </div> 
                 </section>
                 <section className="right">
                     <form action="" method="post">
