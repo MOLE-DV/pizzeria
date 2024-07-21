@@ -6,13 +6,11 @@ import CartItemsContext from './CartItemsContext';
 const Cart = (props: any) => {
     const cartContext = useContext(CartItemsContext);
 
-    const removeFromCart = (cartIndex:number) => {
-        const item = cartContext.cart!.find((cartItem, index) => index === cartIndex)
-        const cart = cartContext.cart
-        cart!.splice(cartIndex,1);
-        if(cart === null) return
-        cartContext.setCart(cart);
-    }
+
+    const removeFromCart = (cartIndex: number) => {
+        const updatedCart = cartContext.cart!.filter((_, index) => index !== cartIndex);
+        cartContext.setCart(updatedCart);
+    };
     
     let totalcost = 0;
 
