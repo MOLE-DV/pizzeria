@@ -5,7 +5,7 @@ import popupContext from '../popupContext';
 import Popup from '../Popup/popup';
 import Cart from '../Cart/Cart';
 import CartItemsContext from '../Cart/CartItemsContext';
-import { changeSize } from './cartManipulation';
+import { changeSize, addToDishFilters } from './cartManipulation';
 
 interface DishFilters {
     [key: string]: string;
@@ -20,7 +20,6 @@ const Menu = () => {
     const [totalCartCost, setTotalCartCost] = useState(0);
 
     const [dishData, setDishData] = useState(order);
-    const [dishCount, setDishCount] = useState(0);
 
     const [dishFilters, setDishFilters] = useState<DishFilters>({
         dishType: 'none'
@@ -28,10 +27,10 @@ const Menu = () => {
 
 
     const changeQuanity = (dishIndex: number, number: number) => {
+        const dishCount = cart.reduce((sum, item) => sum + (item.quantity as number), 0)
         const updatedDishData = dishData.map((dish, index) => {
             if(index === dishIndex && ((dish.order.quantity > 0 && number < 0) || ((number > 0 && dishCount < dishLimit) && (cartContentSize + dish.order.quantity + number <= dishLimit) && number > 0))) {
                 dish.order.quantity += number;
-                setDishCount(dishCount + number);
             }
             else if(index === dishIndex && cartContentSize + dish.order.quantity + number > dishLimit) {        
                 data.setPopup((elements) =>
@@ -47,6 +46,8 @@ const Menu = () => {
     const addToCart = (dishIndex: number) => {
         const dish = dishData[dishIndex];
         const dishPrice = Object.entries(dish.price).find(price => price[0] === dish.order.size || dish.order.size === "")![1] as number;
+        const dishCount = cart.reduce((sum, item) => sum + (item.quantity as number), 0)
+
 
         if (dish.order.quantity > 0 && dishCount <= dishLimit && cartContentSize + dish.order.quantity <= dishLimit) {
             const foundIndex = cart.findIndex(cartItem => cartItem.name === dish.name && cartItem.size === dish.order.size);
@@ -81,18 +82,15 @@ const Menu = () => {
         }
     };
 
+
+    
     useEffect(() => {
         const totalCost = cart.reduce((sum, item) => sum + (item.price as number) * Number(item.quantity), 0);
         setTotalCartCost(totalCost);
         setCartSize(cart.reduce((sum, item) => sum + Number(item.quantity), 0));
     }, [cart]);
 
-    const addToDishFilters = (filter: { [id: string]: string }) => {
-        setDishFilters({
-            ...dishFilters,
-            ...filter
-        });
-    };
+
 
     let dishCountQuery = 0;
 
@@ -103,7 +101,7 @@ const Menu = () => {
                 <div className="filters">
                     <label className='types-label'>
                         Search for:
-                        <select className="types" onChange={(e) => addToDishFilters({ "dishType": e.target.value })}>
+                        <select className="types" onChange={(e) => setDishFilters(addToDishFilters({ "dishType": e.target.value }, dishFilters))}>
                             <option value="none">All</option>
                             <option value="pizza">Pizza</option>
                             <option value="pasta">Pasta</option>
@@ -159,7 +157,7 @@ const Menu = () => {
                 </div>
             </section>
             <CartItemsContext.Provider value={{ cart, setCart }}>
-                {cartContentSize > 0 && <Cart orderSize={cartContentSize} totalCost={totalCartCost} />}
+                <Cart orderSize={cartContentSize} totalCost={totalCartCost} />
             </CartItemsContext.Provider>
         </main>
     );

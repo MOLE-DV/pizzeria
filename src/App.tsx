@@ -8,7 +8,7 @@ import ScrollingPizza from './Components/ScrollingPizza/scrollingpizza';
 
 function App() {
   const [popup, setPopup] = useState<ReactElement<any,any>[] | null>([<div></div>, <div></div>]);
-
+  
   return (
     <div className="App">
       <popupContext.Provider value={{popup, setPopup}}>
@@ -17,7 +17,7 @@ function App() {
           <ImageSlider/>
           <Menu />
           <div id="popupHolder">
-            {popup}
+              {popup}
           </div>
       </popupContext.Provider>
     </div>
