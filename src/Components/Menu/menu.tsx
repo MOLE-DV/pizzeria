@@ -158,7 +158,7 @@ const Menu = () => {
             </section>
             <CartItemsContext.Provider value={{ cart, setCart }}>
                 <Cart orderSize={cartContentSize} totalCost={totalCartCost} />
-            </CartItemsContext.Provider>
+                </CartItemsContext.Provider>
         </main>
     );
 };

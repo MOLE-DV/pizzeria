@@ -42,11 +42,17 @@ const Cart = (props: any) => {
                 </section>
                 <section className="right">
                     <form action="" method="post">
-                        <label>Name: <input type="text" /></label>
-                        <label>Surname: <input type="text" /></label>
-                        <label>City: <input type="text" /></label>
-                        <label>Street: <input type="text" placeholder=''/></label>
-                        <label>House number: <input type="text" /></label>
+                        <div className="line">
+                            <label>Name: <input type="text" /></label>
+                            <label>Surname: <input type="text" /></label>
+                        </div>
+                        
+                        <div className="line">
+                            <label>City: <input type="text" /></label>
+                            <label>Street: <input type="text" placeholder=''/></label>
+                            <label>House number: <input type="text" /></label>
+                        </div>
+                       
                         <div id="info">
                             <h2>Items in cart [{props.orderSize}], Total cost [{props.totalCost}$]</h2>
                         </div>
