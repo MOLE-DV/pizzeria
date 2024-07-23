@@ -6,13 +6,25 @@
     font-family: Sellena
     src: url('../../public/Assets/Fonts/SellenaBrush.ttf')
 
+html
+body 
+  width: 100%
+  margin: 0
+  padding: 0
+  overflow: hidden
+
+
+::selection 
+    background: var(--dirty-red)
+    color: white
+
 
 ::-webkit-scrollbar
     display: none
 
 .App
     position: relative
-    height: 400vh
+    height: fit-content
 
 *
     margin: 0

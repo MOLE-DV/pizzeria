@@ -7,7 +7,7 @@ const ScrollingPizza = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            setPizzaRotation(window.scrollY / 2);
+            setPizzaRotation(window.scrollY / 10);
         })
     })
 

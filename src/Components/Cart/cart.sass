@@ -66,7 +66,12 @@ $cart-height: 70vh
                     .icon-order
                         border-color: white
 
+                .right-order
+                    .info, .remove-button
+                        color: white
+
             .orderItem
+                z-index: 1
                 overflow: visible
                 transition: .1s
                 box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.267)
@@ -76,8 +81,11 @@ $cart-height: 70vh
                 display: flex
                 padding-top: $top-down-padding
                 padding-bottom: $top-down-padding
+
                 .left-order, .right-order
                     display: flex
+                    z-index: 1
+
 
                 .left-order
                     width: 70%
@@ -101,10 +109,24 @@ $cart-height: 70vh
                         margin-left: calc(1vh + 1vw)
                         font-weight: bold
 
-        .right-order
-            display: flex
-            justify-content: center
-            align-items: center
+
+                .right-order
+                    width: 30%
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                    padding-right: calc(.5vh + .5vw)
+
+                    button, .info
+                        width: fit-content
+                        z-index: 999
+                        cursor: pointer
+                        font-size: calc(.8vh + .8vw)
+                        font-weight: bold
+                        background: none
+                        border: none
+                        color: var(--dirty-red)
+                        cursor: pointer
 
     .right
         background: white
@@ -135,10 +157,15 @@ $cart-height: 70vh
                 transition: .1s
 
                 input
+                    color: rgb(114, 114, 114)
+                    width: 100%
                     outline: none
                     height: calc(1vh + 1vw)
                     border: 1px solid black
-                    
+                    font-size: 100%
+                input:focus
+                    color: black
+
             label:focus-within
                 font-weight: bold
                 color: var(--dirty-red)
@@ -149,8 +176,23 @@ $cart-height: 70vh
                 width: 50%
             
             .left-bottom-form
+                display: flex
+                flex-direction: column
 
+                .info
+                    font-size: calc(.8vh + .8vw)
+
+                    span
+                        color: var(--dirty-red)
             
+            .right-bottom-form
+                #payments
+                    display: flex
+                .payment
+                    padding: calc(.5vh + .5vw)
+                    width: calc(4vh + 4vw)
+                    height: calc(4vh + 4vw)
+                    cursor: pointer
 
 @keyframes size-scale
     from 
