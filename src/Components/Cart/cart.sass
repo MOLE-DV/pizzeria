@@ -105,33 +105,52 @@ $cart-height: 70vh
             display: flex
             justify-content: center
             align-items: center
-            
-
-        // .orderItem:last-child
-        //     border-radius: 0 0 calc(1vh + 1vw) calc(1vh + 1vw)
-            
-        // .orderItem:nth-child(1)
-        //     border-top: none
-        //     border-radius: calc(1vh + 1vw) calc(1vh + 1vw) 0 0
 
     .right
         background: white
 
-        .line
-            display: flex
-
         form
             font-size: calc(.8vh + .8vw)
             padding: calc(1vh + 1vw)
+
+        #top-form, #bottom-form
+            width: 100%
+
+        #top-form
             display: flex
             flex-direction: column
             flex-wrap: wrap
 
-        label
-            margin-bottom: calc(.5vh + .5vw)
+            .line
+                display: flex
+
+
+            #info
+                text-align: center
+            label
+                margin-bottom: calc(.5vh + .5vw)
+                display: flex
+                width: 50%
+                flex-direction: column
+                transition: .1s
+
+                input
+                    outline: none
+                    height: calc(1vh + 1vw)
+                    border: 1px solid black
+                    
+            label:focus-within
+                font-weight: bold
+                color: var(--dirty-red)
+        
+        #bottom-form
             display: flex
-            width: 50%
-            flex-direction: column
+            .left-bottom-form, .right-bottom-form
+                width: 50%
+            
+            .left-bottom-form
+
+            
 
 @keyframes size-scale
     from 

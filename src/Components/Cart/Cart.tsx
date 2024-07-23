@@ -12,8 +12,6 @@ const Cart = (props: any) => {
         cartContext.setCart(updatedCart);
     };
     
-    let totalcost = 0;
-
     return (
         <div id="cart">
             <div className="title">checkout</div>
@@ -42,21 +40,27 @@ const Cart = (props: any) => {
                 </section>
                 <section className="right">
                     <form action="" method="post">
-                        <div className="line">
-                            <label>Name: <input type="text" /></label>
-                            <label>Surname: <input type="text" /></label>
+                        <div id="top-form">
+                            <div className="line">
+                                <label>Name: <input type="text" /></label>
+                                <label>Surname: <input type="text" /></label>
+                            </div>
+                            
+                            <div className="line">
+                                <label>City <input type="text" /></label>
+                                <label>Postcode <input type="text" /></label>
+                                <label>Street: <input type="text" placeholder=''/></label>
+                                <label>House number: <input type="text" /></label>
+                            </div>
                         </div>
-                        
-                        <div className="line">
-                            <label>City: <input type="text" /></label>
-                            <label>Street: <input type="text" placeholder=''/></label>
-                            <label>House number: <input type="text" /></label>
+                        <div id="bottom-form">
+                            <div className="left-bottom-form">
+                                <label>Test: <input type="text" /></label>
+                            </div>
+                            <div className="right-bottom-form">
+                                <label>Test: <input type="text" /></label>
+                            </div>
                         </div>
-                       
-                        <div id="info">
-                            <h2>Items in cart [{props.orderSize}], Total cost [{props.totalCost}$]</h2>
-                        </div>
-                        <input type="submit" value="Order" /> <input type="reset" value="Reset" />
                     </form>
 
                 </section>
