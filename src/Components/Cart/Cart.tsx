@@ -5,8 +5,11 @@ import CartItemsContext from './CartItemsContext';
 import card from './Images/credit-card.svg';
 import blik from './Images/Blik-logo.svg';
 import paypal from './Images/paypal-3.svg';
+import popupContext from '../popupContext';
+import Popup from '../Popup/popup';
 
 const Cart = (props: any) => {
+    const popup = useContext(popupContext);
     const cartContext = useContext(CartItemsContext);
     const [paymentMethod, setPaymentMethod] = useState<string | null>(null)
 
@@ -15,6 +18,19 @@ const Cart = (props: any) => {
         cartContext.setCart(updatedCart);
     };
 
+
+    const changePaymentPage = (pageId: number) => {
+        switch (pageId) {
+            case 1:
+                if(paymentMethod !== null){
+
+                }else{
+                    popup.setPopup((popups) => [...popups, <Popup />])
+                }
+
+                break;
+        }
+    }
     
     return (
         <div id="cart">
@@ -56,28 +72,29 @@ const Cart = (props: any) => {
                                 <label>Street: <input type="text"/></label>
                             </div>
                             <div className="line">
-                                <label>House number: <input type="text" required/></label>
-                                <label>Apartment number: <input type="text" required/></label>
+                                <label>House number: <input type="text"/></label>
+                                <label>Apartment number: <input type="text"/></label>
                             </div>
                         </div>
                         <div id="bottom-form">
-                            <div className="left-bottom-form">
-                                <div className="info">
+
+
+                            <div className="info pay">Select payment method:</div>
+                            <div id="payments">
+                                <img src={card} alt='card' className={`payment card ${paymentMethod === 'card' ? 'selected' : ''}`} onClick={() => setPaymentMethod('card')}/>
+                                <img src={blik} alt='blik' className={`payment blik ${paymentMethod === 'blik' ? 'selected' : ''}`} onClick={() => setPaymentMethod('blik')}/>
+                                <img src={paypal} alt="paypal" className={`payment paypal ${paymentMethod === 'paypal' ? 'selected' : ''}`} onClick={() => setPaymentMethod('paypal')}/>
+                            </div>
+                            <div id="line-info">
+                                <div className="info-payment">
                                     Total items: <span>{cartContext.cart!.reduce((sum, item) => sum + (item.quantity as number), 0)}</span>
                                 </div>
-                                <div className="info">
+
+                                <div className="info-payment">
                                     Total cost: <span>{cartContext.cart!.reduce((sum, item) => sum + (item.price as number * Number(item.quantity)), 0)}$</span>
                                 </div>
                             </div>
-                            <div className="right-bottom-form">
-                                <div className="info">Select payment method:</div>
-                                <div id="payments">
-                                    <img src={card} alt='card' className='payment card' onClick={() => setPaymentMethod('card')}/>
-                                    <img src={blik} alt='blik' className='payment blik' onClick={() => setPaymentMethod('blik')}/>
-                                    <img src={paypal} alt="paypal" className='payment paypal' onClick={() => setPaymentMethod('paypal')}/>
-
-                                </div>
-                            </div>
+                            <div id='next' onClick={() => changePaymentPage(1)}>Next</div>
                         </div>
                     </form>
 

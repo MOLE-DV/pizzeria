@@ -69,6 +69,7 @@ $cart-height: 70vh
                 .right-order
                     .info, .remove-button
                         color: white
+                
 
             .orderItem
                 z-index: 1
@@ -85,6 +86,22 @@ $cart-height: 70vh
                 .left-order, .right-order
                     display: flex
                     z-index: 1
+
+                .right-order
+                    display: flex
+                    align-items: center
+                    justify-content: space-around
+                    width: 30%
+
+                    button, .info
+                        background: none
+                        font-size: calc(.8vh + .8vw)
+                        font-weight: bold
+                        border: none
+                        color: var(--dirty-red)                    
+
+                    button
+                        cursor: pointer
 
 
                 .left-order
@@ -110,23 +127,7 @@ $cart-height: 70vh
                         font-weight: bold
 
 
-                .right-order
-                    width: 30%
-                    display: flex
-                    justify-content: space-between
-                    align-items: center
-                    padding-right: calc(.5vh + .5vw)
 
-                    button, .info
-                        width: fit-content
-                        z-index: 999
-                        cursor: pointer
-                        font-size: calc(.8vh + .8vw)
-                        font-weight: bold
-                        background: none
-                        border: none
-                        color: var(--dirty-red)
-                        cursor: pointer
 
     .right
         background: white
@@ -172,27 +173,85 @@ $cart-height: 70vh
         
         #bottom-form
             display: flex
-            .left-bottom-form, .right-bottom-form
-                width: 50%
-            
-            .left-bottom-form
+            flex-direction: column
+
+            #line-info
+                margin-top: calc(.5vh + .5vw)
                 display: flex
-                flex-direction: column
+                flex-direction: row
+                width: calc(4 * (4vh + 4vw) - (4 * (.5vh + .5vw)))
+                padding: calc(.5vh + .5vw)
+                left: 0
+                right: 0
+                margin-left: auto
+                margin-right: auto
+                border-radius: calc(.25vh + .25vw)
+                justify-content: space-around
+                background: var(--dirty-red)
 
-                .info
-                    font-size: calc(.8vh + .8vw)
+                .info-payment
+                    color: white
 
-                    span
-                        color: var(--dirty-red)
+            .info
+                font-size: calc(.8vh + .8vw)
+                color: black
+
+
+
+            button, .info
+                width: fit-content
+                font-size: calc(.8vh + .8vw)
+
+
+            .info.pay
+                width: 100%
+                text-align: center
+                margin-top: calc(1vh + 1vw)
+
+            #payments
+                display: flex
+                justify-content: center
+                width: 100%
+                margin-top: calc(.5vh + .5vw)
             
-            .right-bottom-form
-                #payments
-                    display: flex
-                .payment
-                    padding: calc(.5vh + .5vw)
-                    width: calc(4vh + 4vw)
-                    height: calc(4vh + 4vw)
-                    cursor: pointer
+            .payment
+                padding: calc(.5vh + .5vw)
+                width: calc(4vh + 4vw)
+                height: calc(4vh + 4vw)
+                cursor: pointer
+                transition: .1s
+                border-radius: calc(.25vh + .25vw)
+
+
+            .payment.selected
+                background: var(--dirty-red)
+                border-radius: calc(.25vh + .25vw)
+                transition: .1s
+
+            .payment:hover
+                background: var(--dirty-red)
+
+            .payment:hover ~ .payment.selected
+                background: none
+
+            #next
+                border: none
+                outline: none
+                background: var(--dirty-red)
+                color: white
+                padding: calc(.5vh + .5vw)
+                width: calc(4 * (4vh + 4vw) - (4 * (.5vh + .5vw)))
+                left: 0
+                right: 0
+                margin-left: auto
+                margin-right: auto
+                cursor: pointer
+                transition: .1s
+                margin-top: calc(.5vh + .5vw)
+                border-radius: calc(.25vh + .25vw)
+
+            #next:hover
+                scale: 1.05
 
 @keyframes size-scale
     from 
