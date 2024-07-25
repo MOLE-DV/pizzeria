@@ -19,8 +19,7 @@
     justify-content: center
     align-items: center
     transition: .5s
-    box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.596)
-    
+    box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.596)    
     .top
         width: 100%
         height: calc(calc(3vh + 3vw) - calc(.2vh + .2vw))
@@ -33,14 +32,12 @@
         height: calc(2vh + 2vw)
         position: absolute
         margin: calc(1vh + 1vw)
-        background-image: URL('../../../public/Assets/Images/exclamamation.svg')
         background-position: center
         background-size: 100%
         background-repeat: no-repeat
         left: 0
         top: calc(-.5vh - .5vw)
         z-index: 99999
-        border-radius: calc(1vh + 1vw)
 
     .message
         font-size: calc(.7vh + .7vw)
@@ -54,8 +51,10 @@
         left: 0
         height: calc(.2vh + .2vw)
         background: rgb(255, 88, 88)
-        animation: 3s slider forwards linear
-
+        animation-duration: 3s
+        animation-name: slider
+        animation-fill-mode: forwards
+        animation-timing-function: linear
 .goUp
     animation: .5s goUp forwards
 

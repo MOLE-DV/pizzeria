@@ -34,7 +34,7 @@ const Menu = () => {
             }
             else if(index === dishIndex && cartContentSize + dish.order.quantity + number > dishLimit) {        
                 data.setPopup((elements) =>
-                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''}`} type="cart-update" />]
+                    [...elements as ReactElement[], <Popup message={`The order limit is set to ${dishLimit}${dishLimit - cartContentSize > 0 ? `, you can only add ${dishLimit - cartContentSize} more item/s` : ''}`} type="warning" />]
                 ) 
             }
     
@@ -72,7 +72,7 @@ const Menu = () => {
             }
 
             data.setPopup((elements) =>
-                [...elements as ReactElement[], <Popup message={`[${dish.order.size ? `${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ` : ''}${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added for ${dishPrice * dish.order.quantity}$`} icon={dish.image} type="warning" />]
+                [...elements as ReactElement[], <Popup message={`[${dish.order.size ? `${dish.order.size.charAt(0).toUpperCase() + dish.order.size.slice(1)} ` : ''}${dish.type} ${dish.name.toLowerCase()} x ${dish.order.quantity}] added for ${dishPrice * dish.order.quantity}$`} customIcon={dish.image} type="item_add" />]
             ) 
         
         } else if (cartContentSize + dish.order.quantity >= dishLimit) {

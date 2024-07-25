@@ -1,6 +1,6 @@
 import './cart.sass';
 import React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, ReactElement } from 'react';
 import CartItemsContext from './CartItemsContext';
 import card from './Images/credit-card.svg';
 import blik from './Images/Blik-logo.svg';
@@ -8,28 +8,53 @@ import paypal from './Images/paypal-3.svg';
 import popupContext from '../popupContext';
 import Popup from '../Popup/popup';
 
+interface clientInformation {
+    [key: string] : string | null
+}
+
 const Cart = (props: any) => {
     const popup = useContext(popupContext);
     const cartContext = useContext(CartItemsContext);
+    
     const [paymentMethod, setPaymentMethod] = useState<string | null>(null)
+    const [clientInfo, setClientInfo] = useState<clientInformation>() 
 
-    const removeFromCart = (cartIndex: number) => {
+    const removeFromCart = (cartIndex: number, orderName: string) => {
         const updatedCart = cartContext.cart!.filter((_, index) => index !== cartIndex);
         cartContext.setCart(updatedCart);
+        popup.setPopup((popups) => 
+            [...popups as ReactElement[], <Popup message={`${orderName} removed from cart`} type="item_remove" time={1500}/>]
+        )
     };
 
 
-    const changePaymentPage = (pageId: number) => {
-        switch (pageId) {
-            case 1:
-                if(paymentMethod !== null){
-
-                }else{
-                    popup.setPopup((popups) => [...popups, <Popup />])
-                }
-
-                break;
+    const saveClientInformation = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget as HTMLFormElement)
+        if(paymentMethod === null){
+            popup.setPopup((popups) => [...popups as ReactElement[], <Popup message="Please choose payment method first" type="warning" time={5000}/>])
+            return
         }
+
+        const emptyData = Array.from(data.entries()).filter((value) => {return value[1] === ""} )
+
+        if(emptyData.length > 0){
+            let processedName = emptyData[0].toString().replace('_', ' ').replace(',', "");
+            processedName = processedName[0].toUpperCase() + processedName.slice(1)
+
+            const emptyElement = event.currentTarget.elements.namedItem(emptyData[0].toString().replace(',', "")) as HTMLElement
+
+            Array.from(event.currentTarget.elements).forEach((element: any) => {
+                element.style.borderColor = 'black';
+            });                   
+            
+            emptyElement.style.borderColor = 'red';
+            emptyElement.focus();
+
+            popup.setPopup((popups) => [...popups as ReactElement[], <Popup message={`${processedName} field needs to be filled`} type="warning" time={5000}/>])
+            return
+        }
+        popup.setPopup((popups) => [...popups as ReactElement[], <Popup message={`NEXT ORDER STEP`} type="warning" time={10000}/>])
     }
     
     return (
@@ -42,15 +67,16 @@ const Cart = (props: any) => {
                     {
                         cartContext.cart!.map((item: {[key:string] : string | number}, index: number)=> {
                             if(cartContext.cart!.length < 1) return
+                            const orderTitle = `${item.size != '' ? `${item!.size.toString().charAt(0).toUpperCase() + item!.size.toString().slice(1)} ` : '' }${item.name} x ${item.quantity}`
                             return (
                                 <div className='orderItem' key={index}>
                                     <div className="left-order">
                                         <div className="icon-order" style={{backgroundImage: `URL(${item.image})`}}></div>
-                                        <div className="title-order">{item.size != '' ? `${item.size.toString().charAt(0).toUpperCase() + item.size.toString().slice(1)} ` : null }{item.name} x {item.quantity}</div>
+                                        <div className="title-order">{orderTitle}</div>
                                     </div>
                                     <div className="right-order">
                                         <div className="info">{item.price as number * Number(item.quantity)}$</div>
-                                        <button onClick={() => removeFromCart(index)} className='remove-button'>Remove</button>
+                                        <button onClick={() => removeFromCart(index, orderTitle)} className='remove-button'>Remove</button>
                                     </div>
                                 </div>
                             )
@@ -59,21 +85,20 @@ const Cart = (props: any) => {
                     </div> 
                 </section>
                 <section className="right">
-                    <form action="" method="post">
+                    <form onSubmit={saveClientInformation}>
                         <div id="top-form">
                             <div className="line">
-                                <label>Name: <input type="text" required/></label>
-                                <label>Surname: <input type="text" required/></label>
+                                <label>Name: <input type="text"  name='name'/></label>
+                                <label>Surname: <input type="text"  name='surname'/></label>
                             </div>
                             
                             <div className="line">
-                                <label>City <input type="text" required/></label>
-                                <label>Postcode <input type="text" required/></label>
-                                <label>Street: <input type="text"/></label>
+                                <label>City <input type="text"  name='city'/></label>
+                                <label>Postcode <input type="text" name='postcode'/></label>
+                                <label>Street: <input type="text" name='street'/></label>
                             </div>
                             <div className="line">
-                                <label>House number: <input type="text"/></label>
-                                <label>Apartment number: <input type="text"/></label>
+                                <label>House number / Apartment number: <input type="text" name='house_number'/></label>
                             </div>
                         </div>
                         <div id="bottom-form">
@@ -94,7 +119,7 @@ const Cart = (props: any) => {
                                     Total cost: <span>{cartContext.cart!.reduce((sum, item) => sum + (item.price as number * Number(item.quantity)), 0)}$</span>
                                 </div>
                             </div>
-                            <div id='next' onClick={() => changePaymentPage(1)}>Next</div>
+                            <button type='submit' id='next'>Next</button>
                         </div>
                     </form>
 

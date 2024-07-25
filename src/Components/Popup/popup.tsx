@@ -7,12 +7,25 @@ import delay from '../delay';
 const Popup = (props:any) => {
     const data = useContext(popupContext)
     const [animation, setAnimation] = useState('goUp');
-    const [icon, setIcon] = useState("Assets/Images/exclamamation.svg");
+    const [icon, setIcon] = useState<string | null>(null);
     const [visible, setVisible] = useState(true);
 
+    const sliderAnimation = props.time !== undefined ? {animationDuration: `${props.time / 1000}s`} : {}
+    
     useEffect(() =>{
-        if(props.icon !== undefined) setIcon(props.icon);
-
+        if(props.customIcon !== undefined) setIcon(props.customIcon);
+        switch(props.type){
+            case 'warning':
+                setIcon("Assets/Images/exclamamation.svg");
+                break;
+            case 'success':
+                setIcon("Assets/Images/success.svg");
+                break;
+            case 'item_remove':
+                setIcon("Assets/Images/bin.svg");
+                break;
+                
+        }
     }, [icon])
 
 
@@ -20,7 +33,7 @@ const Popup = (props:any) => {
         async function makeRequest() {
             setAnimation('goUp');
       
-            await delay(3000);
+            await delay(props.time !== undefined ? props.time : 3000);
       
             setAnimation('goDown');
             
@@ -34,8 +47,12 @@ const Popup = (props:any) => {
 
 
     async function viewCartContent() {
-        document.querySelector('#cart')!.scrollIntoView()
-        
+        switch(props.type){
+            case "item_add":
+                document.querySelector('#cart')!.scrollIntoView()
+                break;
+        }
+
         setAnimation('goDown');
             
         await delay(250);
@@ -44,12 +61,12 @@ const Popup = (props:any) => {
     }
  
     return visible ? (
-        <div id="popup"  className={animation}>
-            <div className="top" onClick={() => props.type === "cart-update" ? viewCartContent() : ""}>
+        <div id="popup"  className={animation} onClick={() => viewCartContent()}>
+            <div className="top">
                 <div className="icon" style={{backgroundImage: `URL(${icon})`}}></div>
                 <h1 className="message">{props.message}</h1>
             </div>
-            <div className="slider"></div>
+            <div className="slider" style={sliderAnimation}></div>
         </div>
     )
     : null
