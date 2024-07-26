@@ -2,7 +2,7 @@
     {
         "name": "Cappriciosa",
         "image": "Assets/Images/cappriciosa.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A classic Italian pizza topped with tomato sauce, mozzarella, artichokes, ham, mushrooms, and olives.",
         "type": "pizza",
         "price": {
@@ -15,7 +15,7 @@
     {
         "name": "Margherita",
         "image": "Assets/Images/margherita.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A traditional pizza with tomato sauce, fresh mozzarella, and basil leaves.",
         "type": "pizza",
         "price": {
@@ -28,7 +28,7 @@
     {
         "name": "Pepperoni",
         "image": "Assets/Images/pepperoni.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A popular pizza topped with tomato sauce, mozzarella, and spicy pepperoni slices.",
         "type": "pizza",
         "price": {
@@ -41,7 +41,7 @@
     {
         "name": "Hawaiian",
         "image": "Assets/Images/hawaiian.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A sweet and savory pizza with tomato sauce, mozzarella, ham, and pineapple.",
         "type": "pizza",
         "price": {
@@ -54,7 +54,7 @@
     {
         "name": "Veggie",
         "image": "Assets/Images/veggie.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A healthy choice with tomato sauce, mozzarella, bell peppers, onions, mushrooms, and olives.",
         "type": "pizza",
         "price": {
@@ -67,7 +67,7 @@
     {
         "name": "Meat Lovers",
         "image": "Assets/Images/meatlovers.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A hearty pizza loaded with tomato sauce, mozzarella, pepperoni, sausage, ham, and bacon.",
         "type": "pizza",
         "price": {
@@ -80,7 +80,7 @@
     {
         "name": "Supreme",
         "image": "Assets/Images/supreme.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A pizza with tomato sauce, mozzarella, pepperoni, sausage, bell peppers, onions, and olives.",
         "type": "pizza",
         "price": {
@@ -93,7 +93,7 @@
     {
         "name": "Four Cheese",
         "image": "Assets/Images/four_cheese.jpg",
-        "order": { "quantity": 0, "size": "small" },
+        "order": { "quantity": 1, "size": "small" },
         "description": "A cheesy delight with a blend of mozzarella, cheddar, Parmesan, and blue cheese.",
         "type": "pizza",
         "price": {
@@ -106,7 +106,7 @@
     {
         "name": "Spaghetti Carbonara",
         "image": "Assets/Images/spaghetti_carbonara.jpg",
-        "order": { "quantity": 0, "size": "" },
+        "order": { "quantity": 1, "size": "" },
         "description": "Classic Italian pasta with creamy egg sauce, pancetta, and Parmesan cheese.",
         "type": "pasta",
         "price": {
@@ -116,7 +116,7 @@
     {
         "name": "Lasagna",
         "image": "Assets/Images/lasagna.jpg",
-        "order": { "quantity": 0, "size": "" },
+        "order": { "quantity": 1, "size": "" },
         "description": "Layers of pasta, Bolognese sauce, béchamel, and melted cheese.",
         "type": "pasta",
         "price": {
@@ -126,7 +126,7 @@
     {
         "name": "Ravioli",
         "image": "Assets/Images/ravioli.jpg",
-        "order": { "quantity": 0, "size": "" },
+        "order": { "quantity": 1, "size": "" },
         "description": "Pasta pockets filled with ricotta cheese and spinach, served with marinara sauce.",
         "type": "pasta",
         "price": {
@@ -136,7 +136,7 @@
     {
         "name": "Fettuccine Alfredo",
         "image": "Assets/Images/fettuccine_alfredo.jpg",
-        "order": { "quantity": 0, "size": "" },
+        "order": { "quantity": 1, "size": "" },
         "description": "Fettuccine pasta tossed in a rich and creamy Alfredo sauce.",
         "type": "pasta",
         "price": {
@@ -146,7 +146,7 @@
     {
         "name": "Penne Arrabbiata",
         "image": "Assets/Images/penne_arrabbiata.jpg",
-        "order": { "quantity": 0, "size": "" },
+        "order": { "quantity": 1, "size": "" },
         "description": "Penne pasta in a spicy tomato sauce with garlic and red chili flakes.",
         "type": "pasta",
         "price": {

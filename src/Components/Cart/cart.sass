@@ -5,6 +5,8 @@
 
 $cart-height: 70vh
 
+
+
 #cart
     width: 100%
     height: fit-content
@@ -30,27 +32,19 @@ $cart-height: 70vh
         display: flex
         overflow: hidden
         width: 100%
-        height: 70vh
+        height: 80vh
 
     .left, .right
         width: 50%
         height: 100%
+        overflow-y: scroll
 
 
 
 
     .left
-        overflow: visible
-
-        
-
-        #orderItems::-webkit-scrollbar
-            display: block
-            background: rgba(255, 255, 255, 0.61)
-            width: calc(.4vh + .4vw)
-
-        #orderItems::-webkit-scrollbar-thumb
-            background: var(--dirty-red)
+        overflow: visible   
+            
 
         #orderItems
             height: 100%
@@ -128,11 +122,14 @@ $cart-height: 70vh
 
 
 
+    
 
     .right
         background: white
-
+        overflow-y: scroll
+        
         form
+            
             font-size: calc(.8vh + .8vw)
             padding: calc(1vh + 1vw)
 
@@ -142,8 +139,7 @@ $cart-height: 70vh
         #top-form
             display: flex
             flex-direction: column
-            flex-wrap: wrap
-
+            height: fit-content
             .line
                 display: flex
 
@@ -153,7 +149,7 @@ $cart-height: 70vh
             label
                 margin-bottom: calc(.5vh + .5vw)
                 display: flex
-                width: 50%
+                width: 100%
                 flex-direction: column
                 transition: .1s
 
@@ -174,18 +170,20 @@ $cart-height: 70vh
         #bottom-form
             display: flex
             flex-direction: column
+            overflow-y: auto
+            padding-bottom: calc(1vh + 1vw)
 
             #line-info
                 margin-top: calc(.5vh + .5vw)
                 display: flex
                 flex-direction: row
-                width: calc(4 * (4vh + 4vw) - (4 * (.5vh + .5vw)))
-                padding: calc(.5vh + .5vw)
+                width: calc(3 * 7rem + 4rem)
+                padding: 1rem
                 left: 0
                 right: 0
                 margin-left: auto
                 margin-right: auto
-                border-radius: calc(.25vh + .25vw)
+                border-radius: .5rem
                 justify-content: space-around
                 background: var(--dirty-red)
 
@@ -193,14 +191,14 @@ $cart-height: 70vh
                     color: white
 
             .info
-                font-size: calc(.8vh + .8vw)
+                font-size: .8rem
                 color: black
 
 
 
             button, .info
                 width: fit-content
-                font-size: calc(.8vh + .8vw)
+                font-size: 1.5rem
 
 
             .info.pay
@@ -215,9 +213,9 @@ $cart-height: 70vh
                 margin-top: calc(.5vh + .5vw)
             
             .payment
-                padding: calc(.5vh + .5vw)
-                width: calc(4vh + 4vw)
-                height: calc(4vh + 4vw)
+                padding: 1rem
+                width: 7rem
+                height: 6.5rem
                 cursor: pointer
                 transition: .1s
                 border-radius: calc(.25vh + .25vw)
@@ -240,7 +238,7 @@ $cart-height: 70vh
                 background: var(--dirty-red)
                 color: white
                 padding: calc(.5vh + .5vw)
-                width: calc(4 * (4vh + 4vw) - (2 * (.5vh + .5vw)))
+                width: calc(3 * 7rem + 6rem)
                 left: 0
                 right: 0
                 margin-left: auto
@@ -257,3 +255,40 @@ $cart-height: 70vh
     from 
         height: 0vh
 
+
+
+@media screen and (max-width: 768px)
+    #cart #bottom
+        flex-direction: column
+        height: fit-content
+
+    #cart #bottom .left, #cart #bottom .right
+        width: 100%
+    
+    #cart #bottom .left
+        height: 50%
+        
+
+    #cart .right #top-form label input
+        height: calc(3vh + 3vw)
+        font-size: calc(1.5vh + 1.5vw)
+
+    #cart .right #top-form .line
+        font-size: calc(2vh + 1.5vw)
+
+    #cart .right #bottom-form .info 
+        font-size: 2.5rem
+    
+    #cart .right #bottom-form .payment
+        height: 8rem
+        width: 8rem
+
+    #cart .right #bottom-form #line-info
+        width: calc(3 * 8rem + 4rem)
+        height: 3rem
+        align-items: center
+        font-size: 1.5rem
+
+    #cart .right #bottom-form #next
+        width: calc(3 * 8rem + 6rem)
+        height: 4rem
