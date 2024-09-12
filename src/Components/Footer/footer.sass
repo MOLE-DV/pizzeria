@@ -1,0 +1,37 @@
+@import "../../Styling/colors.sass"
+
+#footer
+    width: 100vw
+    height: calc(10vh + 10vw)
+    background: var(--dirty-red)
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+
+    .title
+        user-select: none
+        font-family: Sellena
+        color: white
+        font-size: calc(2.5vh + 2.5vw)
+
+    #buttons
+        display: flex
+
+
+        .button, .separator
+            user-select: none
+
+        .separator
+            color: white
+
+        .button
+            color: white
+            padding-inline: calc(1vh + 1vw)
+            cursor: pointer
+
+    #copy
+        color: white
+        position: absolute
+        bottom: calc(.2vh + .2vw)

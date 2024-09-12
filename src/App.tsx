@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 import Menu from './Components/Menu/menu';
 import popupContext from './Components/popupContext';
 import ScrollingPizza from './Components/ScrollingPizza/scrollingpizza';
+import Footer from './Components/Footer/footer';
 
 function App() {
   const [popup, setPopup] = useState<ReactElement<any,any>[] | null>([<div></div>, <div></div>]);
@@ -16,6 +17,7 @@ function App() {
           <Header/>
           <ImageSlider/>
           <Menu />
+          <Footer />
           <div id="popupHolder">
               {popup}
           </div>

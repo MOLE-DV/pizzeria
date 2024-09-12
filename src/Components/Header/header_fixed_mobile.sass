@@ -1,0 +1,58 @@
+@media screen and (max-width: 930px) 
+    #header-fixed.fixed
+        .left
+            width: fit-content !important
+        .right
+            justify-content: flex-end
+            width: 100% !important
+            padding-right: 0rem
+
+        .title
+            margin-left: 0 !important
+            width: 20rem
+            padding: 0 !important
+
+@media screen and (max-width: 680px) 
+    #header-fixed.fixed
+        .right
+            .button-fixed
+                min-width: 4rem !important
+
+            .button-fixed:hover
+                background: white
+                .icon
+                    filter: invert(0%)
+
+            .button-fixed:active
+                background: var(--dirty-red)
+                color: white
+                .icon
+                    filter: invert(100%)
+
+            .text
+                display: none
+
+
+
+@media screen and (max-width: 540px) 
+    #header-fixed.fixed
+        .title
+            width: 12rem
+
+    
+@media screen and (max-width: 460px) 
+    #header-fixed.fixed
+        .right
+            .button-fixed
+                padding-inline: .5rem
+                font-size: .7rem !important
+
+
+@media screen and (max-width: 390px) 
+    #header-fixed.fixed
+        .right
+            .button-fixed
+                min-width: 2rem !important
+                padding-inline: .3rem
+                font-size: .6rem !important 
+

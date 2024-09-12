@@ -189,7 +189,6 @@
                     width: calc(300px / 4)
                     transition: .1s
                     cursor: pointer
-                    border-radius: calc(1vh + 1vw)
 
                     .pizza-image
                         width: 100%
@@ -199,6 +198,10 @@
                         background-size: 30%
                         background-repeat: no-repeat
                     
+                .size:first-child
+                    border-radius: calc(1vh + 1vw) 0 0 calc(1vh + 1vw)
+                .size:last-child
+                    border-radius: 0 calc(1vh + 1vw) calc(1vh + 1vw) 0
 
 
 

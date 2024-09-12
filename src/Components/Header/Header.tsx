@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './header.sass';
+import './header_mobile.sass';
+import './header_fixed_mobile.sass';
 import delay from '../delay';
 
 const Header = () => {
@@ -7,9 +9,14 @@ const Header = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', async () => {
+            if(!document.getElementById('imageSlider')) {
+                document.getElementById('header-fixed')!.setAttribute('class', 'fixed down');
+                return null;
+            }
             if(window.scrollY > document.getElementById('imageSlider')!.clientHeight / 3){
                 document.getElementById('header-fixed')!.setAttribute('class', 'fixed down');
                 setLastScrollPosition('down');
+                
             }
             else if(lastScrollPosition !== 'up'){
                 setLastScrollPosition('up');
@@ -39,9 +46,9 @@ const Header = () => {
                 </div>
 
                 <div className="right">
-                    <a className="button menu" href='#menu'>Menu<div className="icon menu" /></a>
-                    <a className="button catering" href='#catering'>Catering<div className="icon catering" /></a>
-                    <a className="button catering" href='#catering'>Checkout<div className="icon checkout" /></a>
+                    <a className="button-fixed" href='#menu'><div className="icon" style={{backgroundImage: `URL(Assets/Images/menu.svg)`}} /><div className="text">Menu</div></a>
+                    <a className="button-fixed" href='#catering'><div className="icon" style={{backgroundImage: `URL(Assets/Images/catering.svg)`}} /><div className="text">Catering</div></a>
+                    <a className="button-fixed" href='#catering'><div className="icon" style={{backgroundImage: `URL(Assets/Images/checkout.svg)`}} /><div className="text">Checkout</div></a>
                 </div>
             </header>
         </div>

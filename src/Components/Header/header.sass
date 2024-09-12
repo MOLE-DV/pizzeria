@@ -3,13 +3,19 @@
 
 #header, #header-fixed
     width: 100vw
-    height: calc(2vh + 2vw)
+    height: 3rem
     position: absolute
     overflow: visible
     display: flex
     justify-content: space-around
-
+    animation: 2s forwards showUpAnimation
     z-index: 1
+
+    @keyframes showUpAnimation 
+        from
+            opacity: 0
+        to
+            opacity: 1
 
     .title
         display: none
@@ -19,7 +25,7 @@
 
     .right
         display: flex
-        justify-content: space-around
+        justify-content: space-evenly
         width: 100%
         height: 100%
 
@@ -27,12 +33,11 @@
         text-decoration: none
         overflow: visible
         display: flex
-        padding-inline: calc(.5vh + .5vw)
         color: white
-        font-size: calc(.75vh + .75vw)
+        font-size: 1.5rem
         font-weight: bold
         opacity: .9
-        letter-spacing: calc(.1vh + .1vw)
+        letter-spacing: .2rem
         text-transform: uppercase
         cursor: pointer
         user-select: none
@@ -41,13 +46,10 @@
         display: flex
         justify-content: center
         align-items: center
-        padding-bottom: calc(.25vh + .25vw)
-        border-radius: 0 0 calc(1vh + 1vw) calc(1vh + 1vw)
     
     
     .button:hover
         opacity: 1
-        height: 100%
         scale: 1.1
 
 #header-fixed.fixed.none
@@ -62,54 +64,75 @@
 #header-fixed.fixed
     user-select: none
     position: fixed
-    height: calc(2.25vh + 2.25vw)
-    background: var(--dirty-red)
-    backdrop-filter: blur(calc(.1vh + .1vw))
+    height: 4rem
     display: flex
-
+    background: white
     overflow: hidden
+    box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.171)
 
     .left, .right
-        width: 50%
         height: 100%
+        overflow: hidden
+
+    .left
+        width: 40%
+
+    .right
+        width: 60%
 
     .left
         display: flex
         align-items: center
 
         .title
-            margin-left: calc(5vh + 5vw)
-            height: fit-content
+            margin-left: 4rem
+            background: var(--dirty-red)
+            text-shadow: .1rem .1rem rgb(105, 105, 105)
+            padding-top: .2rem
+            height: 100%
             display: block
             font-family: Sellena
             display: flex
             justify-content: center
             align-items: center
-            font-size: calc(1.25vh + 1.25vw)
+            font-size: 2rem
             overflow: visible
             color: white
-            padding-inline: calc(1vh + 1vw)
+            padding-inline: 4rem
 
     .right
         justify-content: flex-end
-        padding-right: calc(1vh + 1vw)
+        padding-right: 3rem
         display: flex
 
-        .button
-            opacity: 1
-            color: white
-            background: none
+        .button-fixed
             height: 100%
+            min-width: 10rem
             display: flex
+            justify-content: center
             align-items: center
+            opacity: 1
+            color: black
+            background: none
             text-decoration: none
             border-radius: 0%
             transition: .1s
-            font-size: calc(.6vh + .6vw)
+            font-size: 1rem
 
-        .button:hover
-            background: white
-            color: black
+            .icon
+                margin-inline: .5rem
+                width: 2rem
+                height: 100%
+                background-position: center
+                background-size: 100%
+                background-repeat: no-repeat
+
+        .button-fixed:hover
+            background: var(--dirty-red)
+            color: white
+
+            .icon
+                filter: invert(100%)
 
     @keyframes slideDown
         from 
@@ -126,5 +149,3 @@
     
 
 
-
-        
