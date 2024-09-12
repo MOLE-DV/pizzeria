@@ -48,7 +48,7 @@ const Header = () => {
                 <div className="right">
                     <a className="button-fixed" href='#menu'><div className="icon" style={{backgroundImage: `URL(Assets/Images/menu.svg)`}} /><div className="text">Menu</div></a>
                     <a className="button-fixed" href='#catering'><div className="icon" style={{backgroundImage: `URL(Assets/Images/catering.svg)`}} /><div className="text">Catering</div></a>
-                    <a className="button-fixed" href='#catering'><div className="icon" style={{backgroundImage: `URL(Assets/Images/checkout.svg)`}} /><div className="text">Checkout</div></a>
+                    <a className="button-fixed" href='#cart'><div className="icon" style={{backgroundImage: `URL(Assets/Images/checkout.svg)`}} /><div className="text">Checkout</div></a>
                 </div>
             </header>
         </div>
