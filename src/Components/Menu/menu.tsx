@@ -157,7 +157,7 @@ const Menu = () => {
                 </div>
             </section>
             <CartItemsContext.Provider value={{ cart, setCart }}>
-                {cartContentSize > 0 ? <Cart/> : null }
+                <Cart/>
             </CartItemsContext.Provider>
         </main>
     );

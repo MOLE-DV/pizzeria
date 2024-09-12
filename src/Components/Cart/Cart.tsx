@@ -31,6 +31,12 @@ const Cart = (props: any) => {
     const saveClientInformation = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget as HTMLFormElement)
+
+        if(cartContext.cart!.length < 1) {
+            popup.setPopup((popups) => [...popups as ReactElement[], <Popup message="Please add an item to cart first" type="warning" time={2000}/>])
+            return
+        }
+
         if(paymentMethod === null){
             popup.setPopup((popups) => [...popups as ReactElement[], <Popup message="Please choose payment method first" type="warning" time={5000}/>])
             return
