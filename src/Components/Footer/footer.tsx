@@ -1,11 +1,11 @@
 import './footer.sass';
 import './footer_mobile.sass'
-import { Link } from 'react-router-dom'
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Footer = () => {
     return (
         <footer id="footer">
-            <div className="title">Bella Vista </div>
+            <Link to="/" className="title">Bella Vista </Link>
             <div id="buttons">
                 <Link to="/aboutUs" className="button">About us</Link>
                 <div className="separator">|</div>

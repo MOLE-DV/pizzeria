@@ -1,6 +1,8 @@
 @import '../../Styling/colors.sass'
     
 
+    
+
 #header, #header-fixed
     width: 100vw
     height: 3rem
@@ -77,6 +79,8 @@
     .left, .right
         height: 100%
         overflow: hidden
+        z-index: 9999
+    
 
     .left
         width: 40%
@@ -89,6 +93,8 @@
         align-items: center
 
         .title
+            text-decoration: none
+            cursor: pointer
             margin-left: 4rem
             background: var(--dirty-red)
             text-shadow: .1rem .1rem rgb(105, 105, 105)

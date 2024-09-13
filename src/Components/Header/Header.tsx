@@ -33,16 +33,16 @@ const Header = (props : any) => {
                 </div>
 
                 <div className="right">
-                    <a className="button menu" href='#menu'>Menu</a>
-                    <a className="button catering" href='#catering'>Catering</a>
-                    <a className="button hiring" href='#hiring'>Hiring</a>
-                    <a className="button contact" href='#contact'>Contact</a>
+                    <Link className="button menu" to='/#menu'>Menu</Link>
+                    <Link className="button catering" to='/#catering' onClick={() => alert('not done')}>Catering</Link>
+                    <Link className="button hiring" to='/#hiring' onClick={() => alert('not done')}>Hiring</Link>
+                    <Link className="button contact" to='/aboutUs' >About Us</Link>
                 </div>
             </header>
 
             <header id="header-fixed" className={`fixed ${props.option != undefined ? props.option as string : 'none'}`}>
                 <div className="left">
-                    <div className="title">Bella Vista</div>
+                    <Link to="/" className="title">Bella Vista</Link>
                 </div>
 
                 <div className="right">
