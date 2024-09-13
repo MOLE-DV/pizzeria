@@ -50,6 +50,18 @@ $cart-height: 70vh
             height: 100%
             overflow-y: auto
             overflow-x: hidden
+
+            .emptyCart
+                margin: auto
+                width: fit-content
+                color: var(--dirty-red)
+                background: white
+                padding: 1rem
+                border-radius: 1rem
+                margin-top: 3rem
+                box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.267)
+                user-select: none
+
     
             .orderItem:hover
                 background: var(--dirty-red)
@@ -66,7 +78,6 @@ $cart-height: 70vh
                 
 
             .orderItem
-                z-index: 1
                 overflow: visible
                 transition: .1s
                 box-shadow: 0 0 calc(.5vh + .5vw) rgba(0, 0, 0, 0.267)
@@ -79,7 +90,7 @@ $cart-height: 70vh
 
                 .left-order, .right-order
                     display: flex
-                    z-index: 1
+                    z-index: 0
 
                 .right-order
                     display: flex

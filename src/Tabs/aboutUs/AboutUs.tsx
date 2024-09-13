@@ -15,7 +15,7 @@ const AboutUs = () =>{
     return (
       <div className="App">
         <popupContext.Provider value={{popup, setPopup}}>
-            <Header/>
+            <Header option="always" />
             <AboutUsInfo />
             <Footer />
             <div id="popupHolder">

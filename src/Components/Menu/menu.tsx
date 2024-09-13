@@ -105,6 +105,9 @@ const Menu = () => {
                             <option value="none">All</option>
                             <option value="pizza">Pizza</option>
                             <option value="pasta">Pasta</option>
+                            <option value="soups">Soups</option>
+                            <option value="for_kids">For kids</option>
+                            <option value="starter">Starter</option>
                             <option value="main-dish">Main Dish</option>
                         </select>
                     </label>
@@ -133,7 +136,7 @@ const Menu = () => {
                                             {price * (dish.order.quantity === 0 ? 1 : dish.order.quantity)}$
                                         </div>
                                         <div className="description">{dish.description}</div>
-                                        <div className="order" onClick={() => addToCart(index)}>order</div>
+                                        <div className="order" onClick={() => addToCart(index)}>Add</div>
                                         <div className="quanity-container">
                                             <div className="button minus" onClick={() => changeQuanity(index, -1)}></div>
                                             <div className="quanity">{dish.order.quantity}</div>

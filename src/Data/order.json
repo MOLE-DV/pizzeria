@@ -152,5 +152,94 @@
         "price": {
             "default": 6
         }
+    },
+    {
+        "name": "BBQ Chicken Pizza",
+        "image": "Assets/Images/bbq_chicken.jpg",
+        "order": { "quantity": 1, "size": "small" },
+        "description": "A tangy pizza with BBQ sauce, mozzarella, grilled chicken, red onions, and cilantro.",
+        "type": "pizza",
+        "price": {
+            "small": 7,
+            "medium": 11,
+            "big": 15,
+            "giant": 19
+        }
+    },
+    {
+        "name": "Buffalo Chicken Pizza",
+        "image": "Assets/Images/buffalo_chicken.jpg",
+        "order": { "quantity": 1, "size": "small" },
+        "description": "A spicy pizza with buffalo sauce, mozzarella, grilled chicken, and blue cheese.",
+        "type": "pizza",
+        "price": {
+            "small": 7,
+            "medium": 11,
+            "big": 15,
+            "giant": 19
+        }
+    },
+    {
+        "name": "Seafood Pizza",
+        "image": "Assets/Images/seafood_pizza.jpg",
+        "order": { "quantity": 1, "size": "small" },
+        "description": "A delicious pizza topped with tomato sauce, mozzarella, shrimp, squid, and mussels.",
+        "type": "pizza",
+        "price": {
+            "small": 8,
+            "medium": 12,
+            "big": 16,
+            "giant": 20
+        }
+    },
+    {
+        "name": "Spaghetti Bolognese",
+        "image": "Assets/Images/spaghetti_bolognese.jpg",
+        "order": { "quantity": 1, "size": "" },
+        "description": "Traditional spaghetti with rich meat-based Bolognese sauce.",
+        "type": "pasta",
+        "price": {
+            "default": 8
+        }
+    },
+    {
+        "name": "Pesto Pasta",
+        "image": "Assets/Images/pesto_pasta.jpg",
+        "order": { "quantity": 1, "size": "" },
+        "description": "A fresh and flavorful pasta with basil pesto, garlic, and Parmesan.",
+        "type": "pasta",
+        "price": {
+            "default": 7
+        }
+    },
+    {
+        "name": "Mac and Cheese",
+        "image": "Assets/Images/mac_and_cheese.jpg",
+        "order": { "quantity": 1, "size": "" },
+        "description": "Creamy and cheesy pasta baked to perfection with a golden crust.",
+        "type": "pasta",
+        "price": {
+            "default": 6
+        }
+    },
+    {
+        "name": "Garlic Bread",
+        "image": "Assets/Images/garlic_bread.jpg",
+        "order": { "quantity": 1, "size": "" },
+        "description": "Freshly baked bread with garlic butter and herbs.",
+        "type": "starter",
+        "price": {
+            "default": 3
+        }
+    },
+    {
+        "name": "Bruschetta",
+        "image": "Assets/Images/bruschetta.jpg",
+        "order": { "quantity": 1, "size": "" },
+        "description": "Toasted bread topped with diced tomatoes, basil, and olive oil.",
+        "type": "starter",
+        "price": {
+            "default": 4
+        }
     }
 ]

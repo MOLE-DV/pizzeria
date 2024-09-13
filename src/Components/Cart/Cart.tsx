@@ -60,7 +60,7 @@ const Cart = (props: any) => {
             popup.setPopup((popups) => [...popups as ReactElement[], <Popup message={`${processedName} field needs to be filled`} type="warning" time={5000}/>])
             return
         }
-        popup.setPopup((popups) => [...popups as ReactElement[], <Popup message={`NEXT ORDER STEP`} type="warning" time={10000}/>])
+        popup.setPopup((popups) => [...popups as ReactElement[], <Popup message={`TODO: show payment tab`} type="warning" time={10000}/>])
     }
     
     return (
@@ -70,6 +70,9 @@ const Cart = (props: any) => {
             <div id="bottom">
                 <section className="left">
                     <div id="orderItems">
+                    {
+                        cartContext.cart!.length < 1 ? <h1 className="emptyCart">First add something to cart!</h1> : null
+                    }
                     {
                         cartContext.cart!.map((item: {[key:string] : string | number}, index: number)=> {
                             if(cartContext.cart!.length < 1) return

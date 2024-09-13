@@ -1,9 +1,54 @@
 #aboutUsInfo
-    height: calc(100vh - calc(10vh + 10vw))
+    min-height: calc(100vh - calc(10vh + 10vw))
     width: 100vw
     padding-top: 4.5rem
     display: flex
     justify-content: center
 
+
     .title
-        color: black 
+        color: white
+        margin-top: 2rem
+        font-size: 3rem
+        background: var(--dirty-red)
+        height: fit-content
+        padding: 1rem
+        border-radius: 1rem
+        box-shadow: .1rem .1rem #00000052
+        letter-spacing: .3rem
+        text-transform: uppercase
+        font-family: Sellena
+        margin-bottom: 2rem
+        text-shadow: .1rem .1rem rgba(0,0,0,1)
+        padding-top: 1.5rem 
+
+
+    .description
+        position: relative
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 100vw
+        height: 100%
+        color: white
+        padding-inline: 10rem
+
+
+
+        .image
+            z-index: -1
+            position: absolute
+            width: 100vw
+            height: 100%
+            background-size: cover
+            background-repeat: no-repeat
+            background-position: center
+            background-attachment: fixed
+
+        .text
+            font-size: 1.5rem
+            color: black
+
+            span.logo
+                font-family: Sellena
+                font-size: 4rem
