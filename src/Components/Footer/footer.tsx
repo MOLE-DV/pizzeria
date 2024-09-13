@@ -1,4 +1,5 @@
 import './footer.sass';
+import './footer_mobile.sass'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {

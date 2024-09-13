@@ -1,5 +1,5 @@
 import './aboutUsInfo.sass'
-import ImageSlider from '../../../../Components/ImageSlider/slider';
+import './aboutUsInfo_mobile.sass'
 
 const AboutUsInfo = () => {
     return (
@@ -11,7 +11,11 @@ const AboutUsInfo = () => {
                 <br /><br />
                 Whether you're looking for a cozy spot to enjoy a slice or the perfect place to gather with friends and family, Bella Vista offers a warm and inviting atmosphere. Join us in celebrating the art of pizza-making, where quality, tradition, and taste come together.
                 <br /><br />
-                <span className='logo'>Bella Vista</span> – Where every meal feels like a taste of Italy.
+
+                <div className="last">
+                    <span className='logo'>Bella Vista</span> <span className="dash">–</span> Where every meal feels like a taste of Italy.
+                </div>
+
                 </div>
                 <div className="image" />
             </div>

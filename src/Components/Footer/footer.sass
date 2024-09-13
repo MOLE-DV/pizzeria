@@ -1,8 +1,9 @@
 @import "../../Styling/colors.sass"
 
 #footer
+    position: relative
     width: 100vw
-    height: calc(10vh + 10vw)
+    height: 15rem
     background: var(--dirty-red)
     display: flex
     flex-direction: column
@@ -10,11 +11,13 @@
     align-items: center
 
 
+
     .title
         user-select: none
         font-family: Sellena
         color: white
-        font-size: calc(2.5vh + 2.5vw)
+        font-size: 3rem
+        margin-top: -3rem
 
     #buttons
         display: flex
@@ -28,10 +31,11 @@
 
         .button
             color: white
-            padding-inline: calc(1vh + 1vw)
+            padding-inline: 1rem
             cursor: pointer
+            font-size: 1rem
 
     #copy
         color: white
         position: absolute
-        bottom: calc(.2vh + .2vw)
+        bottom: 1.5rem
