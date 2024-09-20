@@ -28,6 +28,7 @@ const Cart = (props: any) => {
     };
 
 
+
     const saveClientInformation = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget as HTMLFormElement)
